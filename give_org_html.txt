@@ -1,0 +1,720 @@
+
+
+<!DOCTYPE html>
+
+<head>
+    <!-- Basic Page Needs
+  ================================================== -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info = {"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"574bb20dc8","applicationID":"5507211","transactionName":"ZQYHZxcHC0NSAkZbXlxMIVwRKABEcA5cRkNdDwlWF0kiWUUEYVdQQAANYwQBAB9aD1ZXSQ==","queueTime":0,"applicationTime":105,"ttGuid":"6255805B0460D231","agent":"js-agent.newrelic.com/nr-632.min.js"}</script><script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var o=n[t]={exports:{}};e[t][0].call(o.exports,function(n){var o=e[t][1][n];return r(o?o:n)},o,o.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<t.length;o++)r(t[o]);return r}({QJf3ax:[function(e,n){function t(e){function n(n,t,a){e&&e(n,t,a),a||(a={});for(var u=c(n),f=u.length,s=i(a,o,r),p=0;f>p;p++)u[p].apply(s,t);return s}function a(e,n){f[e]=c(e).concat(n)}function c(e){return f[e]||[]}function u(){return t(n)}var f={};return{on:a,emit:n,create:u,listeners:c,_events:f}}function r(){return{}}var o="nr@context",i=e("gos");n.exports=t()},{gos:"7eSDFh"}],ee:[function(e,n){n.exports=e("QJf3ax")},{}],3:[function(e,n){function t(e){return function(){r(e,[(new Date).getTime()].concat(i(arguments)))}}var r=e("handle"),o=e(1),i=e(2);"undefined"==typeof window.newrelic&&(newrelic=window.NREUM);var a=["setPageViewName","addPageAction","setCustomAttribute","finished","addToTrace","inlineHit","noticeError"];o(a,function(e,n){window.NREUM[n]=t("api-"+n)}),n.exports=window.NREUM},{1:12,2:13,handle:"D5DuLP"}],"7eSDFh":[function(e,n){function t(e,n,t){if(r.call(e,n))return e[n];var o=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return e[n]=o,o}var r=Object.prototype.hasOwnProperty;n.exports=t},{}],gos:[function(e,n){n.exports=e("7eSDFh")},{}],handle:[function(e,n){n.exports=e("D5DuLP")},{}],D5DuLP:[function(e,n){function t(e,n,t){return r.listeners(e).length?r.emit(e,n,t):(o[e]||(o[e]=[]),void o[e].push(n))}var r=e("ee").create(),o={};n.exports=t,t.ee=r,r.q=o},{ee:"QJf3ax"}],id:[function(e,n){n.exports=e("XL7HBI")},{}],XL7HBI:[function(e,n){function t(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:i(e,o,function(){return r++})}var r=1,o="nr@id",i=e("gos");n.exports=t},{gos:"7eSDFh"}],G9z0Bl:[function(e,n){function t(){var e=d.info=NREUM.info,n=f.getElementsByTagName("script")[0];if(e&&e.licenseKey&&e.applicationID&&n){c(p,function(n,t){n in e||(e[n]=t)});var t="https"===s.split(":")[0]||e.sslForHttp;d.proto=t?"https://":"http://",a("mark",["onload",i()]);var r=f.createElement("script");r.src=d.proto+e.agent,n.parentNode.insertBefore(r,n)}}function r(){"complete"===f.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=e("handle"),c=e(1),u=(e(2),window),f=u.document,s=(""+location).split("?")[0],p={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-632.min.js"},d=n.exports={offset:i(),origin:s,features:{}};f.addEventListener?(f.addEventListener("DOMContentLoaded",o,!1),u.addEventListener("load",t,!1)):(f.attachEvent("onreadystatechange",r),u.attachEvent("onload",t)),a("mark",["firstbyte",i()])},{1:12,2:3,handle:"D5DuLP"}],loader:[function(e,n){n.exports=e("G9z0Bl")},{}],12:[function(e,n){function t(e,n){var t=[],o="",i=0;for(o in e)r.call(e,o)&&(t[i]=n(o,e[o]),i+=1);return t}var r=Object.prototype.hasOwnProperty;n.exports=t},{}],13:[function(e,n){function t(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,o=t-n||0,i=Array(0>o?0:o);++r<o;)i[r]=e[n+r];return i}n.exports=t},{}]},{},["G9z0Bl"]);</script>
+    <title>Search - give.org</title>
+    
+     <script type="text/javascript">
+         var PageIsInEditMode = "False";
+    </script>
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Mobile Specific Metas
+  ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+  
+    <!-- Favicons
+	================================================== -->
+    <link rel="shortcut icon" href="/images/Give/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/Give/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/Images/Give/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/Images/Give/apple-touch-icon-114x114.png">
+    
+    <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if gte IE 9]>
+  <style type="text/css">
+    .gradient {
+       filter: none;
+    }
+  </style>
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--<![endif]-->
+<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+<link type="text/css" rel="stylesheet" media="all" href="/CSS/Libraries/jquery.iealert.css" />
+<link type="text/css" rel="stylesheet" media="all" href="/CSS/Libraries/jquery.qtip.css" />
+<link href="/css/bundles/Givestyles.css?v=roYIEV9OF8rxjzsS1KkXSuLNvHV1NbJG0dXBSNGqsww1" rel="stylesheet"/>
+
+<link type="text/css" rel="stylesheet" media="all" href="/CSS/BBB/promo.css" />
+<!-- JS begin -->
+<link href="/CSS/Fonts/Give/ss-standard.css" rel="stylesheet">
+<link href="/CSS/Fonts/BBB/stylesheet.css" rel="stylesheet">
+<script style="display: none !important;">
+    // Kill alerts, confirmations and prompts
+    function cleanJS(js) {
+        js = js.replace(/location(\s+)?=/mi, '');
+        js = js.replace(/top.location.+=('|\")/mi, '');
+        js = js.replace(/location\.replace/mi, '');
+        js = js.replace(/\.submit\(\)/mi, '');
+        return js;
+    }
+    _ogEval = window.eval;
+    window.eval = function (text) { _ogEval(cleanJS(text)); };
+    window.confirm = function () { };
+    window.prompt = function () { };
+    //window.open = function () { };
+    // window.print = function () { };
+    // Support hover state for mobile.
+    window.ontouchstart = function () { };
+</script>
+<!-- JS end -->
+<!-- Scripts for Share on page -->
+<script>
+
+</script>
+
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4d6d69281c6eb0a0"></script>
+<!-- Script end -->
+
+
+
+</head>
+
+
+
+<html>
+
+ 
+<body>
+    
+    <!-- Primary Page Layout
+	================================================== -->
+
+    <!--GLOBAL HEADER AREA with top navigation, BBB Give.org logo  and Main Navigation-->
+       <!-- top nav -->
+<script type="text/javascript">
+    var GoogleAnalyticsID = "UA-52706031-1";
+</script>
+<div id="topnav">
+    <div class="container">
+        <div class="sixteen columns">
+            <nav id="top-main-nav"><a href="#topmenu" class="top-menu-link">Additional Options &nbsp;<span class="ss-navigatedown"></span></a>
+        <nav id="topmenu" role="navigation">
+          <ul>
+<li><a href="/about-bbb-wga/contact-us/" target="_blank">Contact Us</a></li>
+<li><a href="http://www.bbb.org/us/find-a-bbb/" target="_blank">Find a BBB</a></li>
+          </ul>
+        </nav>
+      </nav>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="sixteen columns">
+        <nav id="main-nav">
+      <div class="one-third column" style="position: relative;">
+        <div id="logo"><a href="/" class="logo" rel="home" title="Home"><img src="/Images/Give/logo_give.png" class="logo"></a></div>
+        <div id="menu_btn"><a href="#menu" class="menu-link"><img src="/Images/Give/btn_menu_link.png"></a></div>
+      </div>
+     
+      <div class="two-thirds column">
+        <nav id="menu" role="navigation">
+
+          <ul id="nav_screen">
+
+    <li><a href="/for-donors/">for DONORS</a>
+    </li>
+    <li><a href="/for-charities/">for CHARITIES</a>
+    </li>
+    <li><a href="/news-updates/">news &amp; UPDATES</a>
+    </li>
+    <li><a href="/about-bbb-wga/">about us BBB WGA</a>
+    </li>
+           
+           <li class="donate"><a href="/donate/"> donate to GIVE.ORG</a> </li>
+         
+          </ul>
+
+          <ul id="nav_mobile">
+
+    <li><a href="/for-donors/">for DONORS</a>
+    </li>
+    <li><a href="/for-charities/">for CHARITIES</a>
+    </li>
+    <li><a href="/news-updates/">news &amp; UPDATES</a>
+    </li>
+    <li><a href="/about-bbb-wga/">about us BBB WGA</a>
+    </li>
+         
+          <li class="donate"><a href="/donate/"> donate to GIVE.ORG</a> </li>
+           
+           
+          </ul>
+
+        </nav>
+
+      </div>
+    </nav>
+    </div>
+</div>
+<!-- container -->
+<div class="container">
+    <div class="sixteen columns">
+        <div class="subnav_divider">
+        </div>
+    </div>
+</div> 
+
+    <!-- end top nav -->
+
+    <!-- Body container -->
+       
+<!-- Breadcrumbs -->
+<div class="container">
+    <div class="sixteen columns">
+        <div id="blue_box_100" class="search-results-header">
+             <h2>Your search for <span class="search-term">multiple sclerosis</span> <span></span> <span>returned 32 results.</span></h2>
+        </div>
+    </div>
+</div>
+<!-- Main Content -->
+<div class="container subpage">
+    <div class="search-nav column">
+        <div class="rail-item search-box">
+            <form method="get" action="">
+<label for="SearchTerm">Search</label><input Name="term" Value="multiple sclerosis" class="search-term-input" data-required-error="" id="SearchTerm" name="SearchTerm" type="text" value="multiple sclerosis" />            <label for="Location">Location</label>
+            <input Name="location" Value="" class="search-location-input" id="Location" name="Location" type="text" value="" />
+            <p class="instruction">City and state or zip code</p>
+            <input Name="accredited" class="accredited-filter-checkbox" id="FilterAccredited" name="FilterAccredited" type="checkbox" value="true" /><input name="FilterAccredited" type="hidden" value="false" />
+            <label class="accredited-filter-label" for="FilterAccredited">Accredited</label>
+
+            <input Name="tobid" Value="" class="search-term-tobid" id="CategoryID" name="CategoryID" type="hidden" value="" />
+            <button class="search-button">Search</button>
+            </form>
+        </div>
+        <div class="rail-item category-searches">
+            <h3>Category Search</h3>
+            <ul>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90021-001">Charity - American Indian</a></li>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90021-050">Charity - Animal Protection</a></li>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90021-100">Charity - Arts &amp; Culture</a></li>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90021-150">Charity - Blind &amp; Visually Impaired</a></li>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90021-200">Charity - Cancer</a></li>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90021-250">Charity - Child Sponsorship</a></li>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90021-300">Charity - Children &amp; Youth</a></li>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90021-350">Charity - Civil Rights</a></li>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90021-400">Charity - Community Development &amp; Civic Organizations</a></li>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90021-450">Charity - Education &amp; Literacy</a></li>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90021-500">Charity - Elderly</a></li>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90021-550">Charity - Environment</a></li>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90021-600">Charity - Health</a></li>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90021-650">Charity - Human Services (i.e. assistance to individuals &amp; families)</a></li>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90021-700">Charity - Law &amp; Public Interest</a></li>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90021-000">Charity - Local</a></li>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90031-000">Charity - National</a></li>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90021-950">Charity - Other Charitable Organizations</a></li>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90021-750">Charity - Police &amp; Firefighter Organizations</a></li>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90021-800">Charity - Relief &amp; Development</a></li>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90021-850">Charity - Religious</a></li>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90021-900">Charity - Veterans &amp; Military</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="subpage-content column search-results">
+        <div class="search">
+                            <table>
+                <thead>
+                    <tr>
+                        <td>
+                            Charity
+                        </td>
+                        <td class="distance-header">
+                            Distance
+                        </td>
+                        <td class="accreditation-header">
+                            Accredited
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                        <tr>
+                            <td>
+                                <a class="charity-link" href="http://www.give.org/charity-reviews/national/health/multiple-sclerosis-foundation-in-fort-lauderdale-fl-572" data-score="36.75288">Multiple Sclerosis Foundation</a><br />
+                                <div class="accreditation-mobile">
+                                        <span>Accredited: <strong>No</strong></span>
+                                </div>
+                                6520 North Andrews Avenue<br>
+                                Fort Lauderdale, FL 33309<br>
+                                <div class="utility_links">
+                                    <ul>
+                                        <li><a href="http://www.give.org/charity-reviews/national/health/multiple-sclerosis-foundation-in-fort-lauderdale-fl-572">Click here to view the full report</a></li>
+                                    </ul>
+                                </div>
+                                Category: <strong>Health</strong><br />
+                                                            </td>
+                            <td class="distance">
+                            </td>
+                            <td class="accreditation">
+                                    <span>No</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a class="charity-link" href="http://www.give.org/charity-reviews/national/health/national-multiple-sclerosis-society-in-new-york-ny-597" data-score="36.75288">National Multiple Sclerosis Society</a><br />
+                                <div class="accreditation-mobile">
+                                        <img src="/images/Give/accredited-charity-seal.png" alt="Accredited Charity" class="charity-search-seal" />
+                                </div>
+                                733 Third Avenue, 3rd Floor<br>
+                                New York, NY 10017<br>
+                                <div class="utility_links">
+                                    <ul>
+                                        <li><a href="http://www.give.org/charity-reviews/national/health/national-multiple-sclerosis-society-in-new-york-ny-597">Click here to view the full report</a></li>
+                                    </ul>
+                                </div>
+                                Category: <strong>Health</strong><br />
+                                                            </td>
+                            <td class="distance">
+                            </td>
+                            <td class="accreditation">
+                                    <img src="/images/Give/accredited-charity-seal.png" alt="Accredited Charity" class="charity-search-seal" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a class="charity-link" href="http://www.give.org/charity-reviews/national/health/multiple-sclerosis-association-of-america-in-cherry-hill-nj-560" data-score="29.4023">Multiple Sclerosis Association of America</a><br />
+                                <div class="accreditation-mobile">
+                                        <img src="/images/Give/accredited-charity-seal.png" alt="Accredited Charity" class="charity-search-seal" />
+                                </div>
+                                706 Haddonfield Road<br>
+                                Cherry Hill, NJ 08002<br>
+                                <div class="utility_links">
+                                    <ul>
+                                        <li><a href="http://www.give.org/charity-reviews/national/health/multiple-sclerosis-association-of-america-in-cherry-hill-nj-560">Click here to view the full report</a></li>
+                                    </ul>
+                                </div>
+                                Category: <strong>Health</strong><br />
+                                                            </td>
+                            <td class="distance">
+                            </td>
+                            <td class="accreditation">
+                                    <img src="/images/Give/accredited-charity-seal.png" alt="Accredited Charity" class="charity-search-seal" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a class="charity-link" href="http://www.bbb.org/charity-reviews/phoenix/national-multiple-sclerosis-society-arizona-chapter-in-phoenix-az-17835" data-score="6.040694">National Multiple Sclerosis Society Arizona Chapter</a><br />
+                                <strong><span class="aka-label">aka&nbsp;</span><span class="alternative-names">Multiple Sclerosis Society - Desert Southwest Chapter</span></strong><br/>
+                                <div class="accreditation-mobile">
+                                        <span>Accredited: <strong>No</strong></span>
+                                </div>
+                                5025 East Washington Street, Suite 102<br>
+                                Phoenix, AZ 85034<br>
+                                <div class="utility_links">
+                                    <ul>
+                                        <li><a href="http://www.bbb.org/charity-reviews/phoenix/national-multiple-sclerosis-society-arizona-chapter-in-phoenix-az-17835">Click here to view the full report</a></li>
+                                    </ul>
+                                </div>
+                                                            </td>
+                            <td class="distance">
+                            </td>
+                            <td class="accreditation">
+                                    <span>No</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a class="charity-link" href="http://www.bbb.org/upstate-new-york/business-reviews/charity-health/national-multiple-sclerosis-society-in-rochester-ny-235974211" data-score="3.675288">National Multiple Sclerosis Society</a><br />
+                                <div class="accreditation-mobile">
+                                        <span>Accredited: <strong>No</strong></span>
+                                </div>
+                                1650 South Ave<br>
+                                Rochester, NY 14620<br>
+                                <div class="utility_links">
+                                    <ul>
+                                        <li><a href="http://www.bbb.org/upstate-new-york/business-reviews/charity-health/national-multiple-sclerosis-society-in-rochester-ny-235974211">Click here to view the full report</a></li>
+                                    </ul>
+                                </div>
+                                Category: <strong>Charity - Health</strong><br />
+                                                            </td>
+                            <td class="distance">
+                            </td>
+                            <td class="accreditation">
+                                    <span>No</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a class="charity-link" href="http://www.bbb.org/cincinnati/business-reviews/charity-health/national-multiple-sclerosis-society-in-cincinnati-oh-16862" data-score="3.675288">National Multiple Sclerosis Society</a><br />
+                                <div class="accreditation-mobile">
+                                        <img src="/images/Give/accredited-charity-seal.png" alt="Accredited Charity" class="charity-search-seal" />
+                                </div>
+                                4440 Lake Forest Drive<br>
+                                Cincinnati, OH 45242<br>
+                                <div class="utility_links">
+                                    <ul>
+                                        <li><a href="http://www.bbb.org/cincinnati/business-reviews/charity-health/national-multiple-sclerosis-society-in-cincinnati-oh-16862">Click here to view the full report</a></li>
+                                    </ul>
+                                </div>
+                                Category: <strong>Charity - Health</strong><br />
+                                                            </td>
+                            <td class="distance">
+                            </td>
+                            <td class="accreditation">
+                                    <img src="/images/Give/accredited-charity-seal.png" alt="Accredited Charity" class="charity-search-seal" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a class="charity-link" href="http://www.bbb.org/charity-reviews/fortcollins/can-do-multiple-sclerosis-in-fort-collins-co-42069" data-score="3.675288">Can Do Multiple Sclerosis</a><br />
+                                <div class="accreditation-mobile">
+                                        <span>Accredited: <strong>No</strong></span>
+                                </div>
+                                27 Main Street, Suite 303<br>
+                                Fort Collins, CO 81632<br>
+                                <div class="utility_links">
+                                    <ul>
+                                        <li><a href="http://www.bbb.org/charity-reviews/fortcollins/can-do-multiple-sclerosis-in-fort-collins-co-42069">Click here to view the full report</a></li>
+                                    </ul>
+                                </div>
+                                                            </td>
+                            <td class="distance">
+                            </td>
+                            <td class="accreditation">
+                                    <span>No</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a class="charity-link" href="http://www.bbb.org/nashville/business-reviews/charity-local/national-multiple-sclerosis-society-in-nashville-tn-18100581" data-score="3.675288">National Multiple Sclerosis Society</a><br />
+                                <div class="accreditation-mobile">
+                                        <span>Accredited: <strong>No</strong></span>
+                                </div>
+                                4219 Hillsboro RoadSuite 306<br>
+                                Nashville, TN 37215<br>
+                                <div class="utility_links">
+                                    <ul>
+                                        <li><a href="http://www.bbb.org/nashville/business-reviews/charity-local/national-multiple-sclerosis-society-in-nashville-tn-18100581">Click here to view the full report</a></li>
+                                    </ul>
+                                </div>
+                                Category: <strong>Charity - Local</strong><br />
+                                                            </td>
+                            <td class="distance">
+                            </td>
+                            <td class="accreditation">
+                                    <span>No</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a class="charity-link" href="http://www.bbb.org/charity-reviews/wisconsin/human-services/multiple-sclerosis-fund-inc-in-algoma-wi-23755" data-score="3.675288">Multiple Sclerosis Fund, Inc</a><br />
+                                <div class="accreditation-mobile">
+                                        <span>Accredited: <strong>No</strong></span>
+                                </div>
+                                PO Box 153<br>
+                                Algoma, WI 54201<br>
+                                <div class="utility_links">
+                                    <ul>
+                                        <li><a href="http://www.bbb.org/charity-reviews/wisconsin/human-services/multiple-sclerosis-fund-inc-in-algoma-wi-23755">Click here to view the full report</a></li>
+                                    </ul>
+                                </div>
+                                Category: <strong>Human Services (i.e. assistance to individuals &amp; families)</strong><br />
+                                                            </td>
+                            <td class="distance">
+                            </td>
+                            <td class="accreditation">
+                                    <span>No</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a class="charity-link" href="http://www.bbb.org/arkansas/business-reviews/charity-local/national-multiple-sclerosis-society-in-little-rock-ar-90236739" data-score="3.675288">National Multiple Sclerosis Society</a><br />
+                                <div class="accreditation-mobile">
+                                        <span>Accredited: <strong>No</strong></span>
+                                </div>
+                                1100 N University, Suite 225<br>
+                                Little Rock, AR 72207<br>
+                                <div class="utility_links">
+                                    <ul>
+                                        <li><a href="http://www.bbb.org/arkansas/business-reviews/charity-local/national-multiple-sclerosis-society-in-little-rock-ar-90236739">Click here to view the full report</a></li>
+                                    </ul>
+                                </div>
+                                Category: <strong>Charity - Local</strong><br />
+                                                            </td>
+                            <td class="distance">
+                            </td>
+                            <td class="accreditation">
+                                    <span>No</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a class="charity-link" href="http://www.bbb.org/southwestern-missouri/business-reviews/charity-national/national-multiple-sclerosis-society-in-springfield-mo-33244" data-score="3.675288">National Multiple Sclerosis Society</a><br />
+                                <div class="accreditation-mobile">
+                                        <span>Accredited: <strong>No</strong></span>
+                                </div>
+                                1675 E Seminole St Ste J<br>
+                                Springfield, MO 658042480<br>
+                                <div class="utility_links">
+                                    <ul>
+                                        <li><a href="http://www.bbb.org/southwestern-missouri/business-reviews/charity-national/national-multiple-sclerosis-society-in-springfield-mo-33244">Click here to view the full report</a></li>
+                                    </ul>
+                                </div>
+                                Category: <strong>Charity - National</strong><br />
+                                                            </td>
+                            <td class="distance">
+                            </td>
+                            <td class="accreditation">
+                                    <span>No</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a class="charity-link" href="http://www.bbb.org/western-ontario/business-reviews/charity-national/multiple-sclerosis-society-ontario-division-in-toronto-on-18685" data-score="3.215877">Multiple Sclerosis Society - Ontario Division</a><br />
+                                <div class="accreditation-mobile">
+                                        <span>Accredited: <strong>No</strong></span>
+                                </div>
+                                700-175 Bloor Street E, North Tower<br>
+                                Toronto, ON M4W3R8<br>
+                                <div class="utility_links">
+                                    <ul>
+                                        <li><a href="http://www.bbb.org/western-ontario/business-reviews/charity-national/multiple-sclerosis-society-ontario-division-in-toronto-on-18685">Click here to view the full report</a></li>
+                                    </ul>
+                                </div>
+                                Category: <strong>Charity - National</strong><br />
+                                                            </td>
+                            <td class="distance">
+                            </td>
+                            <td class="accreditation">
+                                    <span>No</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a class="charity-link" href="http://www.bbb.org/akron/business-reviews/charity-health/oak-clinic-for-multiple-sclerosis-in-uniontown-oh-90019612" data-score="3.215877">Oak Clinic for Multiple Sclerosis</a><br />
+                                <div class="accreditation-mobile">
+                                        <span>Accredited: <strong>No</strong></span>
+                                </div>
+                                3838 Massillon Rd Ste 360<br>
+                                Uniontown, OH 446857965<br>
+                                <div class="utility_links">
+                                    <ul>
+                                        <li><a href="http://www.bbb.org/akron/business-reviews/charity-health/oak-clinic-for-multiple-sclerosis-in-uniontown-oh-90019612">Click here to view the full report</a></li>
+                                    </ul>
+                                </div>
+                                Category: <strong>Charity - Health</strong><br />
+                                                            </td>
+                            <td class="distance">
+                            </td>
+                            <td class="accreditation">
+                                    <span>No</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a class="charity-link" href="http://www.bbb.org/utah/business-reviews/charity-health/friends-of-multiple-sclerosis-charities-in-salt-lake-city-ut-22360135" data-score="3.215877">Friends of Multiple Sclerosis Charities</a><br />
+                                <div class="accreditation-mobile">
+                                        <span>Accredited: <strong>No</strong></span>
+                                </div>
+                                396 W Ironwood Dr<br>
+                                Salt Lake City, UT 84115<br>
+                                <div class="utility_links">
+                                    <ul>
+                                        <li><a href="http://www.bbb.org/utah/business-reviews/charity-health/friends-of-multiple-sclerosis-charities-in-salt-lake-city-ut-22360135">Click here to view the full report</a></li>
+                                    </ul>
+                                </div>
+                                Category: <strong>Charity - Health</strong><br />
+                                                            </td>
+                            <td class="distance">
+                            </td>
+                            <td class="accreditation">
+                                    <span>No</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a class="charity-link" href="http://www.bbb.org/new-york-city/business-reviews/charity-elderly/national-multiple-sclerosis-society-nyc-chapter-in-new-york-ny-153472" data-score="2.756466">National Multiple Sclerosis Society - Nyc Chapter</a><br />
+                                <div class="accreditation-mobile">
+                                    <span>Accredited: <strong>Yes</strong></span>
+                                </div>
+                                733 Third Avenue<br>
+                                New York, NY 10017<br>
+                                <div class="utility_links">
+                                    <ul>
+                                        <li><a href="http://www.bbb.org/new-york-city/business-reviews/charity-elderly/national-multiple-sclerosis-society-nyc-chapter-in-new-york-ny-153472">Click here to view the full report</a></li>
+                                    </ul>
+                                </div>
+                                Category: <strong>Charity - Elderly</strong><br />
+                                                            </td>
+                            <td class="distance">
+                            </td>
+                            <td class="accreditation">
+                                    <span>Yes</span>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+<span style="display:none"> « Previous </span><span class="current">&nbsp;&nbsp;1&nbsp;&nbsp;</span><a href="/search/?page=2&term=multiple%20sclerosis&location=&FilterAccredited=false&tobid=">&nbsp;&nbsp;2&nbsp;&nbsp;</a><a href="/search/?page=3&term=multiple%20sclerosis&location=&FilterAccredited=false&tobid=">&nbsp;&nbsp;3&nbsp;&nbsp;</a><a href="/search/?page=2&term=multiple%20sclerosis&location=&FilterAccredited=false&tobid="> Next »</a>        </div>
+    </div>
+    <div class="search-nav mobile-search-nav column">
+        <div class="rail-item search-box">
+            <form method="get" action="">
+<label for="SearchTerm">Search</label><input Name="term" Value="multiple sclerosis" class="search-term-input" id="SearchTerm" name="SearchTerm" type="text" value="multiple sclerosis" />            <label for="Location">Location</label>
+            <input Name="location" Value="" class="search-location-input" id="Location" name="Location" type="text" value="" />
+            <p class="instruction">City and state or zip code</p>
+            <input Name="accredited" class="accredited-filter-checkbox" id="FilterAccredited" name="FilterAccredited" type="checkbox" value="true" /><input name="FilterAccredited" type="hidden" value="false" />
+            <label class="accredited-filter-label" for="FilterAccredited">Accredited</label>
+
+            <input Name="tobid" Value="" class="search-term-tobid" id="CategoryID" name="CategoryID" type="hidden" value="" />
+            <button class="search-button">Search</button>
+            </form>
+        </div>
+        <div class="rail-item category-searches">
+            <h3>Category Search</h3>
+            <ul>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90021-001">Charity - American Indian</a></li>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90021-050">Charity - Animal Protection</a></li>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90021-100">Charity - Arts &amp; Culture</a></li>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90021-150">Charity - Blind &amp; Visually Impaired</a></li>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90021-200">Charity - Cancer</a></li>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90021-250">Charity - Child Sponsorship</a></li>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90021-300">Charity - Children &amp; Youth</a></li>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90021-350">Charity - Civil Rights</a></li>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90021-400">Charity - Community Development &amp; Civic Organizations</a></li>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90021-450">Charity - Education &amp; Literacy</a></li>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90021-500">Charity - Elderly</a></li>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90021-550">Charity - Environment</a></li>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90021-600">Charity - Health</a></li>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90021-650">Charity - Human Services (i.e. assistance to individuals &amp; families)</a></li>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90021-700">Charity - Law &amp; Public Interest</a></li>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90021-000">Charity - Local</a></li>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90031-000">Charity - National</a></li>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90021-950">Charity - Other Charitable Organizations</a></li>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90021-750">Charity - Police &amp; Firefighter Organizations</a></li>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90021-800">Charity - Relief &amp; Development</a></li>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90021-850">Charity - Religious</a></li>
+                    <li><a href="/search/?location=&amp;FilterAccredited=false&amp;tobid=90021-900">Charity - Veterans &amp; Military</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="subnav column rail-content right promo-sidebar">
+            <div id="RR-1" class="rail-item">
+                <div class="rail-item"><div>    <h3 class="lowercase">Can&#39;t find the charity you&#39;re looking for?</h3>
+    <ul class="subnav">
+            <li><a href="/ask-us-about-a-charity1/">
+                <div>Suggest a Charity for Review</div>
+            </a></li>
+            <li><a href="http://give.org/charity-reviews/national/">
+                <div>Browse the list of National Charity Reports</div>
+            </a></li>
+            <li><a href="/for-donors/national-charity-seal-participants/">
+                <div>Browse the list of National Charity Seal Participants</div>
+            </a></li>
+    </ul>
+
+</div></div>
+            </div>
+                    </div>
+</div>
+
+
+
+    <!-- Body container -->
+   
+    <!-- Footer -->
+       <!-- footer container -->
+<footer>
+  <div class="container">
+
+
+<div class='one-third column'>               <h3>
+                <a href="/for-donors/">for Donors</a>
+               </h3>  
+               <ul>
+                    <li><a href="/for-donors/the-care-we-put-into-our-reports/">The care we put into our reports</a></li>
+                    <li><a href="/for-donors/charity-programs-at-local-bbbs/">Charity Review at Local BBBs</a></li>
+                    <li><a href="/for-donors/national-charity-seal-participants/">National Charity Seal Participants</a></li>
+                    <li><a href="/for-donors/ask-about-a-charity/">File a Complaint About a Charity</a></li>
+                    <li><a href="/for-donors/about-specific-giving-guidance/">Giving Guidance &amp; Tips</a></li>
+                    <li><a href="/for-donors/donor-request-label/">Donor Request Label</a></li>
+                </ul>
+               <h3>
+                <a href="/for-charities/">for Charities</a>
+               </h3>  
+               <ul>
+                    <li><a href="/for-charities/How-We-Accredit-Charities/">How We Accredit Charities</a></li>
+                    <li><a href="/for-charities/starting-the-free-accreditation-process/">Starting the Free Accreditation Process</a></li>
+                    <li><a href="/for-charities/about-charity-seal-licensing/">About Charity Seal Licensing</a></li>
+                    <li><a href="/for-charities/about-mobile-giving/">About Mobile Giving</a></li>
+                    <li><a href="/for-charities/charting-impact/">Charting Impact</a></li>
+                </ul>
+</div><div class='one-third column'>               <h3>
+                <a href="/about-bbb-wga/">about BBB WGA</a>
+               </h3>  
+               <ul>
+                    <li><a href="/about-bbb-wga/annual-reports/">Annual Reports</a></li>
+                    <li><a href="/about-bbb-wga/staff-and-board/">Board and Staff</a></li>
+                    <li><a href="/about-bbb-wga/sponsors/">Institutional Sponsors</a></li>
+                    <li><a href="/about-bbb-wga/government-and-regulatory-agencies/">Government and Regulatory Disclosures</a></li>
+                    <li><a href="/about-bbb-wga/privacy-policy/">Privacy Policy</a></li>
+                    <li><a href="/about-bbb-wga/trademarks/">Copyright and Trademarks</a></li>
+                    <li><a href="/about-bbb-wga/terms-of-use/">Terms of Use</a></li>
+                    <li><a href="/about-bbb-wga/contact-us/">Contact Us</a></li>
+                    <li><a href="http://www.bbb.org/bbb-locator/" target="_top">Find A BBB</a></li>
+                    <li><a href="http://www.bbb.org/">bbb.org</a></li>
+                    <li><a href="/about-bbb-wga/frequently-asked-questions/">Frequently Asked Questions</a></li>
+                    <li><a href="/about-bbb-wga/more-about-us/">More About Us</a></li>
+                </ul>
+</div><div class='one-third column'>               <h3>
+                <a href="/news-updates/">News &amp; Updates</a>
+               </h3>  
+               <ul>
+                    <li><a href="/news-updates/">Latest News</a></li>
+                    <li><a href="/wise-giving-guide/">Wise Giving Guide</a></li>
+                </ul>
+</div><div class="one-third column" id="home_newsblock">
+ <h3 class="black-txt">
+    </h3>
+    <ul>
+            <li><a href="https://www.facebook.com/pages/BBB-Wise-Giving-Alliance/146493838709799" target="_blank">
+                <img src= "/link/0a568fb412cf4e52b9c087720d0cfe13.aspx?id=260766&amp;epslanguage=en" /></a> </li>
+            <li><a href="https://twitter.com/bbb_give" target="_blank">
+                <img src= "/link/c586d1158295408195f348b10c9b84ad.aspx?id=260767&amp;epslanguage=en" /></a> </li>
+            <li><a href="https://www.youtube.com/user/BBBconsumerTips" target="_blank">
+                <img src= "/link/a194b49921a747549b130faa6b984936.aspx?id=260768&amp;epslanguage=en" /></a> </li>
+    </ul>
+</div>
+     
+     
+  </div>
+</footer>
+
+<!-- Begin Bottom of Footer -->
+<div id="footer_bottom">
+    <div class="container">
+        <div class="one-half column">
+            <a href="/">
+                <img src="/Images/Give/logo_give.png" alt="Give.org BBB Wise Giving Alliance"></a></div>
+        <div class="one-half column">
+            <a href="/donate/">
+                <img width="320" height="70" id="footer_give" alt="Please Support Our Mission by Giving to Give.org"
+                    src="/images/give/btn_give.png" />
+            </a>
+        </div>
+    </div>
+    <!-- container -->
+</div>
+<!-- End Bottom of Footer -->
+
+        
+    <!-- Footer -->
+
+    <!-- End Document
+================================================== -->
+<script src="/scripts/bundles/Givescripts.js?v=01tKMyf3C7I8OnVhoWweHv6Rfvt6k-0TL-PT3321r-k1"></script>
+
+</body>
+<!-- winServer=383762wvapp002 -->
+</html>

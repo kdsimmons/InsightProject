@@ -1,0 +1,23 @@
+#.gitignore#
+43rdCongress.csv
+43rdCongress.html
+43rdCongress_files
+FarmersMarketsBenefits.json
+Farmers_Markets_With_Benefits.csv
+Insight HD Acceptance Letter July 2015.pdf
+OutreachIdeas.txt
+ProjectIdeas.txt
+README.md
+README.txt
+facebook_twitter.ipynb
+first_analysis.ipynb
+git_notes
+git_notes~
+give_org_html.txt
+learning_beautiful_soup.ipynb
+multiple_sclerosis.ipynb
+practice_scraping.ipynb
+project_week2.ipynb
+scraping_databases.ipynb
+test_db.py
+world_innodb.sql

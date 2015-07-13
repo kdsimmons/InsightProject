@@ -1,0 +1,109 @@
+how does patient figure out what clinician to see?
+- where to deliver baby
+- where to get emergency care
+- how to find physical therapist
+
+ambulance use:
+- how to distribute home location of ambulances
+- which ambulance service is best
+
+what insurance plan should I choose?
+
+triage
+- how can ER triage be optimized?
+
+patterns of compliance:
+- with medical advice/prescriptions
+- churning out of clini al trials
+- follow-up and mode of communication
+- patient follow-up and initial appointments related to sheduling ease and platform
+
+how do I find a support group for patients with my disease/operation?
+
+what are typical outcomes for someone with my disease and demographic characteristics?
+
+ideas from Jake:
+- Education: assist in patient research of drug information and experiences of other patients, help parents understand what they should look for during the development of their baby/child, etc.
+- Public Policy: Can you help some subset of the population make better health choices, when it comes to caregivers, products, health initiatives with most impact, etc. etc.
+- Insurance (Medicare, Medicaid): how to select insurance plans, what factors drive the differences in costs from facility to facility.
+
+---------
+search for facility by specialty
+
+possible data sources:
+- ZocDoc
+- google maps
+- hospital websites
+- commonhealth.wbur.org
+- Yelp
+- ratemds.com
+- askapatient.com
+- healthgrades.com
+- ABMS, ACGME, AMA for specialty names
+- spreadsheet with address, bedsize, and ID number for MA hospitals: http://www.mass.gov/eohhs/gov/departments/dph/programs/hcq/healthcare-quality/health-care-facilities/licensure-and-medicaremedicaid-certification.html
+- JCAHO accreditation
+- data.cityofboston.gov
+
+information to print for each provider/institution:
+- name
+- address
+- distance from home
+- distance from work
+- appointment phone #
+- appointment website
+- department website
+- link to reviews
+- number of providers (?)
+- time to appointment from reviews (?)
+- insurance accepted - possibly just Medicare/Medicaid
+- clinician demographics (?)
+- appointment hours
+- phone hours
+- choices to narrow down free-form specialty
+- US News, Hospital Compare ratings of facility
+- list of clinicians
+
+
+--------
+
+search for specialty based on condition/symptoms
+search for outreach opportunities (like colon cancer days)
+restaurants for food restrictions (e.g. gluten-free)
+
+--------
+where to find fresh produce or other foods
+
+data sources:
+- healthdata.gov: boston datasets
+- data.cityofboston.gov
+
+input:
+- address
+- (optional) type of food
+- date (later step)
+
+output:
+- map of locations
+- list of locations
+- coded icons by type of food
+- address, name, website, hours, season
+
+similar existing products:
+- Fresh Food Finder app
+
+strategy - initial run:
+- Download and import one dataset. JSON or CSV?
+- Find distance for 50 Milk St.
+- Make list for 50 Milk St.
+- Make map for 50 Milk St.
+
+strategy - basic product:
+- Add address input.
+- Download and import additional datasets.
+- Combine datasets.
+- Incorporate datasets into tool.
+
+strategy - possible extensions:
+- Add date input.
+- Add selection by type of food.
+- Pull data at runtime.
