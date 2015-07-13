@@ -19,3 +19,4 @@ multiple_sclerosis.ipynb: work for week 1 presentation
 practice_scraping.ipynb: practice scaping based on tutorial
 project_week2.ipynb: clean code from week 2
 scraping_databases.ipynb: work toward scraping charity websites
+learning_beautiful_soup.ipynb: practice with beautiful soup
