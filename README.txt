@@ -3,6 +3,7 @@ README.txt
 ~/Dropbox/KristyInsight/
 
 README.txt: this document
+ToDo.txt: ongoing to-do list
 
 ProjectIdeas.txt: ideas for data project
 OutreachIdeas.txt: ideas for project focused on outreach

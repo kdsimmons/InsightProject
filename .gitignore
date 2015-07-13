@@ -6,6 +6,6 @@ FarmersMarketsBenefits.json
 Farmers_Markets_With_Benefits.csv
 Insight HD Acceptance Letter July 2015.pdf
 world_innodb.sql
-git_notes~
-.gitignore~
-#.gitignore#
+.ipynb_checkpoints/*.ipynb
+*.*~
+*.*#
