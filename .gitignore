@@ -9,3 +9,4 @@ world_innodb.sql
 .ipynb_checkpoints/*.ipynb
 *.*~
 *.*#
+twitter_access.csv
