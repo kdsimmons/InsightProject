@@ -2,7 +2,7 @@ TO-DO LIST
 
 Week 2:
 - scrape Facebook info (MS)
-- scrape Twitter info (MS)
+- scrape Twitter info (MS) - DONE
 - scrape Charity Navigator (MS)
 - code search of charity databases (MS)
 - code selection of state
@@ -12,6 +12,7 @@ future:
 - remove Canadian charities (maybe)
 - develop overall charity score
 - cluster charities 
+- get missing/wrong twitter handles
 
 miscellaneous:
 - learn to use todo.txt
