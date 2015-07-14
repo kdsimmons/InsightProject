@@ -3,12 +3,11 @@ import pymysql as mdb
 
 # create pandas dataframe called pandadf
 
-def convert_to_sql(charities):
-    # get username and password for MySQL
+def convert_to_sql(pandadf):
     mysqlauth = pd.DataFrame.from_csv('mysql_user.csv')
     user = mysqlauth.username[0]
     password = mysqlauth.password[0]
-    
+
     con = mdb.connect('localhost', user, password, 'charity_data')
     with con:
         cur = con.cursor()
@@ -25,33 +24,31 @@ def convert_to_sql(charities):
                 bbb_link VARCHAR(255),\
                 facebook_link VARCHAR(255),\
                 twitter_link VARCHAR(255),\
-                bbb_accred CHAR(3),\
+                bbb_accred VARCHAR(255),\
                 char_nav_score FLOAT(8,4),\
                 facebook_likes INT,\
                 twitter_followers INT\
            )"\
         ) 
-
-        # put data in table
-        for idx in range(len(charities)):
-            cur.execute("INSERT INTO charities_sql(name) VALUES(%s)", str(charities.name[idx]))
-            cur.execute("INSERT INTO charities_sql(address) VALUES(%s)", str(charities.address[idx]))
-            cur.execute("INSERT INTO charities_sql(city) VALUES(%s)", str(charities.city[idx]))
-            cur.execute("INSERT INTO charities_sql(link) VALUES(%s)", str(charities.link[idx]))
-            cur.execute("INSERT INTO charities_sql(bbb_link) VALUES(%s)", str(charities.bbb_link[idx]))
-            cur.execute("INSERT INTO charities_sql(facebook_link) VALUES(%s)", str(charities.facebook_link[idx])) 
-            cur.execute("INSERT INTO charities_sql(twitter_link) VALUES(%s)", str(charities.twitter_link[idx]))
-            cur.execute("INSERT INTO charities_sql(bbb_accred) VALUES(%s)", str(charities.bbb_accred[idx]))
-            cur.execute("INSERT INTO charities_sql(char_nav_score) VALUES(%s)", str(charities.char_nav_score[idx])) 
-            cur.execute("INSERT INTO charities_sql(facebook_likes) VALUES(%s)", str(charities.facebook_likes[idx]))
-            cur.execute("INSERT INTO charities_sql(twitter_followers) VALUES(%s)", str(charities.twitter_followers[idx]))
-    
-        # print or return table for debugging
+        
+        char_nav_score_placeholder = 0 # not scraped yet
+        facebook_likes_placeholder = 0 # not scaped yet
+        
+        for idx in range(len(pandadf)):
+            value_str = ("\"" + str(pandadf.name[idx]) + "\",\"" + str(pandadf.address[idx]) + "\",\"" 
+                         + str(pandadf.city[idx]) + "\",\"" + str(pandadf.link[idx]) + "\",\"" + str(pandadf.bbb_link[idx])
+                         + "\",\"" + str(pandadf.facebook_link[idx]) + "\",\"" + str(pandadf.twitter_link[idx]) + "\",\""
+                         + str(pandadf.bbb_accred[idx])+ "\",\"" + str(char_nav_score_placeholder) + "\",\"" + str(facebook_likes_placeholder) 
+                         + "\",\"" + str(pandadf.twitter_followers[idx]) + "\"")
+            cur.execute("INSERT INTO charities_sql(name, address, city, link, bbb_link, facebook_link, twitter_link, bbb_accred, \
+                        char_nav_score, facebook_likes, twitter_followers) VALUES(" + value_str + ")")
+        
         cur.execute("SELECT * FROM charities_sql")
         rows = cur.fetchall()
         #for row in rows:
-         #   print row
-            
+            #print row
+
     return rows
 
-sqlrows = convert_to_sql(pandadf)
+sqlrows = convert_to_sql(panda_char)
+# sqlrows now has the rows of the SQL table, mainly for debuggin
