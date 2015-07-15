@@ -3,7 +3,8 @@ TO-DO LIST
 Week 2:
 - scrape Facebook info (MS)
 - scrape Twitter info (MS) - DONE
-- scrape Charity Navigator (MS)
+- put data into SQL - DONE
+- scrape Charity Navigator (MS) - DONE
 - code search of charity databases (MS)
 - code selection of state
 - automatically page through search results
@@ -16,3 +17,5 @@ future:
 
 miscellaneous:
 - learn to use todo.txt
+- edit resume
+- connect to printer
