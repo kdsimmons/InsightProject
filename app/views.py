@@ -8,7 +8,6 @@ mysqlauth = pd.DataFrame.from_csv('/home/kristy/Documents/auth_codes/mysql_user.
 sqluser = mysqlauth.username[0]
 sqlpass = mysqlauth.password[0]
 
-citydb = mdb.connect(user=sqluser, host="localhost", db="world_innodb", password=sqlpass, charset='utf8')
 con = mdb.connect(user=sqluser, host="localhost", db="charity_data", password=sqlpass, charset='utf8')
 
 @app.route('/')
