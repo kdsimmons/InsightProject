@@ -1,0 +1,16 @@
+BBB:
+- *year, state incorporated*
+- *stated purpose*
+- text description
+- total program expenses
+- leadership
+- staff size
+- tax status
+- division of expenses and income
+- phone number
+
+Charity Navigator:
+- various financial, accountability, and transparency  metrics 
+- *income statement* 
+- *compensation of leaders*
+- mission statement

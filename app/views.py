@@ -25,7 +25,7 @@ def charity_input():
 def charity_output():
     # pull 'ID' from input field and store it as the target disease
     disease = request.args.get('ID')
-    clean_disease_name = '_'.join(disease.lower().replace('\'s disease','').split())
+    clean_disease_name = '_'.join(disease.lower().replace('\'s disease','').replace('\'s','').split())
 
     # read SQL table into pandas data frame and convert to list of dictionaries
     try:
