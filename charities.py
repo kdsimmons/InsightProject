@@ -41,35 +41,58 @@ def clean_bbb_info(bbb_soups,disease):
     # NOTE: May need permission to include links to BBB. I didn't find any info on restrictions in pulling information.
     charities = []
     for soup in bbb_soups:
-        bbb_table = soup.select('div.search table')[0].tbody 
+        tables = soup.select('div.search table')
+        if len(tables) == 0:
+            print "No charities found."
+            return charities
+        bbb_table = tables[0].tbody 
         for row in bbb_table.findAll('tr'):
             charity_data = {}
             charity_data['disease'] = disease
-            charity_data['name'] = row.select('a.charity-link')[0].get_text()
+            charity_data['name'] = row.select('a.charity-link')[0].get_text().replace(u'\u2019', u'\'')
             charity_data['bbb_link'] = row.select('a.charity-link')[0].attrs.get('href')
             accred_seal = row.select('img.charity-search-seal')
             if accred_seal:
                 charity_data['bbb_accred'] = accred_seal[0].attrs.get('alt')
             else:
                 charity_data['bbb_accred'] = row.select('div.accreditation-mobile')[0].get_text()
-            charity_data['address'] = row.select('div.accreditation-mobile')[0].next_sibling.strip()
+            charity_data['address'] = row.select('div.accreditation-mobile')[0].next_sibling.strip().replace(u'\u2019', u'\'')
             charity_data['city'] = row.select('div.accreditation-mobile')[0].next_sibling.next_sibling.next_sibling.strip()
             
             charities.append(charity_data)
 
-    # get year of incorporation where possible
+    # get other data from BBB where possible
     for charity in charities:
+        response = requests.get(charity['bbb_link'])
+        soup = bs4.BeautifulSoup(response.text)
+        
+        # year of incorporation and stated purpose 
         try:
-            response = requests.get(charity['bbb_link'] + '#purpose')
-            purpsoup = bs4.BeautifulSoup(response.text)
-            stag = purpsoup.find(text=re.compile('Year, State Incorporated'))
-            charity['year_incorporated'] = re.findall('[1-2][0-9][0-9][0-9]', stag.findNext('p').text)[0]
-            stag = purpsoup.find(text=re.compile('Stated Purpose'))
-            charity['purpose'] = stag.findNext('p').text.strip('"')
+            purpdiv = soup.select('div#purpose')[0]
+            tag = purpdiv.findNext(text=re.compile('Year, State Incorporated'))
+            charity['year_incorporated'] = re.findall('[1-2][0-9][0-9][0-9]', tag.findNext('p').text)[0]
+            #charity['state'] = re.findall('[A-Za-z]+', tag.findNext('p').text)[0]
+            tag = purpdiv.findNext(text=re.compile('Stated Purpose'))
+            charity['purpose'] = tag.findNext('p').text.strip('"').replace(u'\u2019', u'\'')
         except:
-            charity['year_incorporated'] = 0
+            charity['year_incorporated'] = np.nan
             charity['purpose'] = ''
 
+        # board and staff size
+        try:
+            govdiv = soup.select('div#governance')[0]
+            charity['board_size'] = govdiv.findNext(text=re.compile('Board Size')).findNext('p').text
+            charity['staff_size'] = govdiv.findNext(text=re.compile('Paid Staff Size')).findNext('p').text
+        except:
+            charity['board_size'] = np.nan
+            charity['staff_size'] = np.nan
+
+        # tax exempt status
+        try:
+            taxdiv = soup.select('div#taxstatus')[0]
+            charity['tax_status'] = taxdiv.findNext('p').text
+        except:
+            charity['tax_status'] = 'unknown'
 
     return charities
 
@@ -132,7 +155,7 @@ def get_twitter_followers(charities):
     
     for charity in charities:
         if charity['twitter_link'] == '':
-            charity['twitter_followers'] = 0
+            charity['twitter_followers'] = np.nan
         else:
             try:
                 twitterid = re.findall('https://twitter.com/(.*)', charity['twitter_link'])[0]
@@ -171,6 +194,13 @@ def get_char_nav_info(dictlist):
             charity['cn_overall'] = 0
             charity['cn_financial'] = 0
             charity['cn_acct_transp'] = 0
+            charity['leader_compensation'] = ''
+            charity['total_contributions'] = 0
+            charity['total_expenses'] = 0
+            charity['total_revenue'] = 0
+            charity['percent_admin'] = 0
+            charity['percent_fund'] = 0
+            charity['percent_program'] = 0
             continue
         
         # get Charity Navigator data 
@@ -316,7 +346,6 @@ def convert_to_sql(pandadf,disease):
     con = mdb.connect('localhost', user, password, 'charity_data')
     
     table_name = '_'.join(disease.split())
-    print table_name
     with con:
         cur = con.cursor()
         
@@ -337,6 +366,9 @@ def convert_to_sql(pandadf,disease):
                 bbb_accred VARCHAR(255),\
                 year_incorporated INT,\
                 purpose VARCHAR(255),\
+                board_size INT,\
+                staff_size INT,\
+                tax_status VARCHAR(255),\
                 cn_rated VARCHAR(255),\
                 cn_overall FLOAT(8,4),\
                 cn_financial FLOAT(8,4),\
@@ -355,25 +387,28 @@ def convert_to_sql(pandadf,disease):
         
         facebook_likes_placeholder = 0 # not scraped yet
 
-        print "\nTotal records: " + str(len(pandadf)) + "\n"
+        print "\nTotal records in " + table_name + ": " + str(len(pandadf)) + "\n"
         for idx in range(len(pandadf)):
             try:
                 value_str = ("\"" + str(pandadf.name[idx]) + "\",\"" + str(pandadf.disease[idx]) + "\",\"" + str(pandadf.address[idx]) + "\",\"" 
                              + str(pandadf.city[idx]) + "\",\"" + str(pandadf.link[idx]) + "\",\"" + str(pandadf.bbb_link[idx])
                              + "\",\"" + str(pandadf.facebook_link[idx]) + "\",\"" + str(pandadf.twitter_link[idx]) + "\",\"" 
                              + str(pandadf.cn_link[idx]) + "\",\"" + str(pandadf.bbb_accred[idx]) + "\",\"" + str(pandadf.year_incorporated[idx])
-                             + "\",\"" + str(pandadf.purpose[idx]) + "\",\"" + str(pandadf.cn_rated[idx])
+                             + "\",\"" + str(pandadf.purpose[idx]) + "\",\"" + str(pandadf.board_size[idx]) + "\",\"" + str(pandadf.staff_size[idx]) + "\",\"" 
+                             + str(pandadf.tax_status[idx]) + "\",\"" + str(pandadf.cn_rated[idx])
                              + "\",\"" + str(pandadf.cn_overall[idx]) + "\",\"" + str(pandadf.cn_financial[idx]) + "\",\"" + str(pandadf.cn_acct_transp[idx]) 
                              + "\",\"" + str(pandadf.leader_compensation[idx]) + "\",\"" + str(pandadf.total_expenses[idx]) + "\",\"" 
                              + str(pandadf.total_contributions[idx]) + "\",\"" + str(pandadf.total_revenue[idx]) + "\",\"" 
                              + str(pandadf.percent_program[idx]) + "\",\"" + str(pandadf.percent_admin[idx]) + "\",\"" + str(pandadf.percent_fund[idx])
                              + "\",\"" + str(facebook_likes_placeholder) + "\",\"" + str(pandadf.twitter_followers[idx]) + "\"")
                 cur.execute("INSERT INTO " + str(table_name) + "(name, disease, address, city, link, bbb_link, facebook_link, twitter_link, cn_link, bbb_accred, \
-                             year_incorporated, purpose, cn_rated, cn_overall, cn_financial, cn_acct_transp, leader_compensation, total_expenses, \
+                             year_incorporated, purpose, board_size, staff_size, tax_status, cn_rated, cn_overall, cn_financial, cn_acct_transp, \
+                             leader_compensation, total_expenses, \
                              total_contributions, total_revenue, percent_program, percent_admin, percent_fund, facebook_likes, twitter_followers) \
                              VALUES(" + value_str + ")")
             except:
-                print "\nProblem converting " + str(idx) + " to SQL.\n"
+                print "\nProblem converting " + str(idx) + " to SQL."
+                print sys.exc_info()
                 continue
                 
         cur.execute("SELECT * FROM " + str(table_name))
@@ -390,11 +425,13 @@ def main():
     # Cycle through diseases
     disease_list = ["alzheimer's disease", "blindness", "breast cancer", "colon cancer", "crohn's disease",
                     "dyslexia", "leukemia", "lung cancer", "multiple sclerosis", "diabetes",
-                    "osteoporosis", "parkinson's disease"]
+                    "osteoporosis", "parkinson's disease", "prostate cancer", "brain cancer"]
     #disease_list = ["cancer"]
-    
+    #disease_list = ["colon cancer"]
+
     for disease in disease_list:
         clean_disease_name = ' '.join(disease.lower().replace('\'s disease','').split())
+        print "\nProcessing data for " + clean_disease_name + "...\n"
         # TO DO: allow synonymous names (e.g. colon vs colorectal cancer)
         
         # Scrape data
@@ -408,9 +445,10 @@ def main():
         # Convert to Pandas and then to SQl
         panda_char = pd.DataFrame(char_with_nav_link)
         sqlrows = convert_to_sql(panda_char,clean_disease_name)
-        
+                
         # Print message to check that code is working and summarize data
-        print clean_disease_name + ": " + str(len(sqlrows)) + " charities"
+        print "\nCharities focused on " + clean_disease_name + ": " + str(len(sqlrows)) + "\n"
+    print "Done."
 
 
 # Boilerplate to call main()

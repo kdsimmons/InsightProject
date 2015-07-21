@@ -17,8 +17,8 @@ PutPandasInMySQL.txt: script to put data in SQL for sharing
 test_db.py: test that MySQL is working
 
 data analysis files:
-week2_run.sh: shell script to run through diseases collecting data (will be deprecated)
-project_week2.py: python script to get data for a specified disease
+week2_run.sh: old shell script to run through diseases collecting data (no longer useful)
+project_week2.py: old python script to get data for a specified disease (no longer useful)
 charities.py: python script to get data for all diseases using main function
 
 ipython notebooks:
@@ -38,6 +38,7 @@ convert_to_mysql.ipynb: work toward getting data into SQL
 get_char_nav_data.ipynb: work on scraping Charity Navigator
 machine_learning_practice.ipynb: practice doing machine learning
 make_graphs.ipynb: make graphs and do basic clustering for Week 2
+scraping_scratch_work.ipynb: notebook for testing out new web scraping code
 
 app files:
 app: files to run project app
