@@ -337,6 +337,31 @@ def get_char_nav_info(dictlist):
 
     return dictlist
 
+def clean_features(pandadf):
+    # Get organization age
+    pandadf['year_incorporated'][pandadf['year_incorporated'] == 0] = np.nan
+    pandadf['age'] = 2015 - pandadf['year_incorporated']
+
+    # Get state
+    def extract_state(city_unicode):
+        match = re.search(', ([A-Z][A-Z]) [0-9]+', city_unicode)
+        if match:
+            return match.group(1)
+        else:
+            return ''
+    pandadf['state'] = pandadf['city'].apply(extract_state)
+
+    # Convert tax-exempt status to 0/1
+    pandadf['tax_exempt'] = pandadf['tax_status'].apply(lambda x: int(x.find('is tax-exempt under section 501(c)(3)') > -1))
+    pandadf[:10][['tax_exempt','tax_status']]
+
+    # Convert CN rating to 0/1
+    pandadf['cn_rated'] = pandadf['cn_rated'].apply(lambda x: int(x == u'Rated'))
+
+    # Convert BBB accreditation to 0/1
+    pandadf['bbb_accred'] = pandadf['bbb_accred'].apply(lambda x: int(x == u'\nAccredited: Yes\n' or x == u'Accredited Charity'))
+
+
 # make sure to do sudo mysqld_safe from command line first
 def convert_to_sql(pandadf,disease):
     mysqlauth = pd.DataFrame.from_csv('/home/kristy/Documents/auth_codes/mysql_user.csv')
@@ -344,6 +369,7 @@ def convert_to_sql(pandadf,disease):
     password = mysqlauth.password[0]
 
     con = mdb.connect('localhost', user, password, 'charity_data')
+    # try adding charset='utf8'
     
     table_name = '_'.join(disease.split())
     with con:
@@ -444,6 +470,7 @@ def main():
         
         # Convert to Pandas and then to SQl
         panda_char = pd.DataFrame(char_with_nav_link)
+        panda_char = clean_features(panda_char)
         sqlrows = convert_to_sql(panda_char,clean_disease_name)
                 
         # Print message to check that code is working and summarize data

@@ -20,6 +20,7 @@ data analysis files:
 week2_run.sh: old shell script to run through diseases collecting data (no longer useful)
 project_week2.py: old python script to get data for a specified disease (no longer useful)
 charities.py: python script to get data for all diseases using main function
+clean_sql.py: clean SQL database without rescraping (also add code to charities.py)
 
 ipython notebooks:
 10 Minutes to pandas.ipynb: tutorial on pandas module
@@ -39,6 +40,7 @@ get_char_nav_data.ipynb: work on scraping Charity Navigator
 machine_learning_practice.ipynb: practice doing machine learning
 make_graphs.ipynb: make graphs and do basic clustering for Week 2
 scraping_scratch_work.ipynb: notebook for testing out new web scraping code
+clean_sql.ipynb: clean SQL database that's already been created
 
 app files:
 app: files to run project app

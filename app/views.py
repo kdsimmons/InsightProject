@@ -3,6 +3,7 @@ from app import app
 import pymysql as mdb
 from a_Model import ModelIt
 import pandas as pd
+import sys, re
 
 mysqlauth = pd.DataFrame.from_csv('/home/kristy/Documents/auth_codes/mysql_user.csv')
 sqluser = mysqlauth.username[0]
@@ -23,17 +24,30 @@ def charity_input():
 
 @app.route('/output')
 def charity_output():
-    # pull 'ID' from input field and store it as the target disease
-    disease = request.args.get('ID')
+    # pull input fields and store
+    disease = request.args.get('disease')
     clean_disease_name = '_'.join(disease.lower().replace('\'s disease','').replace('\'s','').split())
-
+    state = request.args.get('state')
+    
     # read SQL table into pandas data frame and convert to list of dictionaries
     try:
         with con:
-            panda_char = pd.read_sql("SELECT * FROM " + str(clean_disease_name), con)
+            panda_char = pd.read_sql("SELECT * FROM " + str(clean_disease_name) + " WHERE state = \"" + str(state) + "\"", con)
+            #panda_char = pd.read_sql("SELECT * FROM " + str(clean_disease_name), con)
+
+            # TO DO: Clean data before putting into SQL so I don't have to read in the whole table.
+
+            panda_char['state'] = ''
+            for idx in range(len(panda_char)):
+                match = re.search(', ([A-Z][A-Z]) [0-9]+', panda_char['city'][idx])
+                if match:
+                    panda_char['state'][idx] = match.group(1)
+        if not state == '':
+            panda_char = panda_char[panda_char['state']==state]
 
         charities = panda_char.to_dict(outtype='records')
     except:
+        print sys.exc_info()
         custom_error = "Sorry, that disease is not in our database."
         charities = []
         the_result = 0
