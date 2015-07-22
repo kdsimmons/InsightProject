@@ -468,6 +468,7 @@ def main():
                     "osteoporosis", "parkinson's disease", "prostate cancer", "brain cancer", "cancer"]
     disease_list = ["brain cancer", "cancer"]
     #disease_list = ["colon cancer"]
+    disease_list = ["tumor"] # 'malignant' and 'oncology' have 1 each; 'neoplasm' has 0
 
     for disease in disease_list:
         clean_disease_name = ' '.join(disease.lower().replace('\'s disease','').split())
