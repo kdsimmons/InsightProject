@@ -41,6 +41,7 @@ machine_learning_practice.ipynb: practice doing machine learning
 make_graphs.ipynb: make graphs and do basic clustering for Week 2
 scraping_scratch_work.ipynb: notebook for testing out new web scraping code
 clean_sql.ipynb: clean SQL database that's already been created
+look_at_data.ipynb: exploratory data analysis
 
 app files:
 app: files to run project app

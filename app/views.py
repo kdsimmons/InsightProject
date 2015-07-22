@@ -27,24 +27,16 @@ def charity_output():
     # pull input fields and store
     disease = request.args.get('disease')
     clean_disease_name = '_'.join(disease.lower().replace('\'s disease','').replace('\'s','').split())
-    state = request.args.get('state')
+    req_state = request.args.get('state')
     
     # read SQL table into pandas data frame and convert to list of dictionaries
     try:
         with con:
-            panda_char = pd.read_sql("SELECT * FROM " + str(clean_disease_name) + " WHERE state = \"" + str(state) + "\"", con)
-            #panda_char = pd.read_sql("SELECT * FROM " + str(clean_disease_name), con)
-
-            # TO DO: Clean data before putting into SQL so I don't have to read in the whole table.
-
-            panda_char['state'] = ''
-            for idx in range(len(panda_char)):
-                match = re.search(', ([A-Z][A-Z]) [0-9]+', panda_char['city'][idx])
-                if match:
-                    panda_char['state'][idx] = match.group(1)
-        if not state == '':
-            panda_char = panda_char[panda_char['state']==state]
-
+            if req_state == '':
+                panda_char = pd.read_sql("SELECT * FROM " + str(clean_disease_name), con)
+            else:
+                panda_char = pd.read_sql("SELECT * FROM " + str(clean_disease_name) + " WHERE state = \"" + str(req_state) + "\"", con)
+            
         charities = panda_char.to_dict(outtype='records')
     except:
         print sys.exc_info()
