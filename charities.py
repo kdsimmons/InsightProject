@@ -158,7 +158,7 @@ def get_twitter_followers(charities):
             charity['twitter_followers'] = -1
         else:
             try:
-                twitterid = re.findall('https://twitter.com/(.*)', charity['twitter_link'])[0]
+                twitterid = re.findall('http[s]*://twitter.com/(.*)', charity['twitter_link'])[0]
                 user = api.get_user(twitterid)
                 charity['twitter_followers'] = user.followers_count
             except:

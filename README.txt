@@ -45,4 +45,8 @@ look_at_data.ipynb: exploratory data analysis
 
 app files:
 app: files to run project app
-run.py: main file to exucude project app
+run.py: main file to execute project app
+view.py: outer code to process data
+program_rankings: functions to rank charities
+input.html: template for input screen
+output.html: template for output screen

@@ -1,3 +1,7 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,7 +13,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Find a Charity</title>
+    <title>Starter Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../static/css/bootstrap.min.css" rel="stylesheet">
@@ -39,7 +43,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">FindACharity</a>
+          <a class="navbar-brand" href="#">Project name</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -53,37 +57,56 @@
 
     <br><br>
 
-    <div class="container">
+  <div class="container">
     <div class="starter-template">
-        <!--<h2>Input Page</h2>-->
-	<br><br>
-        <h4>Choose a type of charity to look for:</h4>
+        <h2>Output Page</h2>
+        <p>Enter some user input</p>
     </div>
 
     <div class = "container">
 
       <form  action="/output" method="GET">
         <div class="form-group">
-          <label for="disease">Disease:</label>
-          <input type="text" id="disease" name='disease' placeholder="e.g. multiple sclerosis">
+          <label for="ID">City  Name:</label>
+          <input type="text" id="ID" name='ID' placeholder="e.g. ">
         </div>
-        <div class="form-group">
-          <label for="state">State:</label>
-          <input type="text" id="state" name='state' placeholder="e.g. PA">
-        </div>
-
         <div>
-          <button type="submit" class="btn btn-default btn-lg">Find charities!</button>
+          <button type="submit" class="btn btn-default btn-lg">Find this city!</button>
         </div>
-
       </form>
     </div>
-
-
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+  </div> <!-- /.container-->
 
-    </div><!-- /.container -->
+    <div class="container">
+      <div class="starter-template">
+        <h3>Results:</h3>
+        <p class="lead">Below is the result of your query.<br> You just took user input and looked up the information. Now we need to expand the functionality!</p>
+      </div>
+
+      <table class="table table-hover">
+      <tr><th>Name</th><th>Country</th><th>Population</th></tr>
+      {% for city in cities %}
+      <tr><td>{{ city['name'] }}</td><td>{{ city['country']}}</td><td> {{ city['population'] }}</td></tr>
+      {% endfor %}
+      </table>
+
+
+     </div><!-- /.container -->
+
+    <div class="container">
+      <div class="starter-template">
+        <h3>Another Result:</h3>
+        <p class="lead">Now we've taken the input and called a function from your package.<br>The result is {{the_result}}</p>
+      </div>
+
+
+      <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+     <script src="static/js/bootstrap.min.js"></script>
+
+
+     </div><!-- /.container -->
 
 
     <!-- Bootstrap core JavaScript

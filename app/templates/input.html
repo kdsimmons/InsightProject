@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Starter Template for Bootstrap</title>
+    <title>Find a Charity</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../static/css/bootstrap.min.css" rel="stylesheet">
@@ -39,7 +39,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="#">FindACharity</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -55,20 +55,25 @@
 
     <div class="container">
     <div class="starter-template">
-        <h2>Input Page</h2>
-        <p>Enter some user input</p>
+        <!--<h2>Input Page</h2>-->
+	<br><br>
+        <h4>Choose a type of charity to look for:</h4>
     </div>
 
     <div class = "container">
 
       <form  action="/output" method="GET">
         <div class="form-group">
-          <label for="ID">City  Name:</label>
-          <input type="text" id="ID" name='ID' placeholder="e.g. ">
+          <label for="disease">Disease:</label>
+          <input type="text" id="disease" name='disease' placeholder="e.g. multiple sclerosis">
+        </div>
+        <div class="form-group">
+          <label for="state">State:</label>
+          <input type="text" id="state" name='state' placeholder="e.g. PA">
         </div>
 
         <div>
-          <button type="submit" class="btn btn-default btn-lg">Find this city!</button>
+          <button type="submit" class="btn btn-default btn-lg">Find charities!</button>
         </div>
 
       </form>
