@@ -43,6 +43,7 @@ def convert_prefs_to_ideal(pref_list):
             raise Exception('Improper input for ' + str(col) + ': ' + str(pref_list[col]) + ' (' + str(type(pref_list[col])) + ').')
 
     # Numerical values are defined based on the overall distribution.
+    # TO DO: Use pre-computed distributions rather than reading in SQL data on the fly.
     # Put in ideal values for variables with 2 possible values
     for col in ['age','twitter_followers']:
         quantiles = combined_panda[col].describe(percentile_width=50.)
