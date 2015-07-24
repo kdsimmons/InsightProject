@@ -467,9 +467,7 @@ def main():
                     "crohn's disease", "melanoma", "lymphoma",
                     "dyslexia", "leukemia", "lung cancer", "multiple sclerosis", "diabetes",
                     "osteoporosis", "parkinson's disease", "prostate cancer", "brain cancer", "cancer", "tumor"]
-    #disease_list = ["brain cancer", "cancer"]
-    #disease_list = ["colon cancer"]
-    #disease_list = ["tumor"] # 'malignant' and 'oncology' have 1 each; 'neoplasm' has 0
+    disease_list = ['fibromyalgia', 'colitis', 'lupus', 'throat cancer', 'pancreatic cancer', 'bone cancer', 'uterine cancer', 'ovarian cancer', 'bladder cancer', 'cervical cancer']
 
     for disease in disease_list:
         clean_disease_name = ' '.join(disease.lower().replace('\'s disease','').split())

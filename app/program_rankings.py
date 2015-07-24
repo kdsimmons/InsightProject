@@ -16,7 +16,7 @@ def convert_prefs_to_ideal(pref_list):
     # Read in SQL data to get distributions for some variables.
     combined_panda = pd.DataFrame()
     disease_list = ['alzheimer', 'blindness', 'breast_cancer', 'colon_cancer', 'crohn', 'diabetes',
-                    'dyslexia', 'leukemia', 'lung_cancer', 'multiple_sclerosis', 'osteoporosis',
+                    'dyslexia', 'leukemia', 'lung_cancer', 'multiple_sclerosis',
                     'parkinson', 'prostate_cancer', 'cancer', 'tumor', 'melanoma', 'lymphoma']
     with con:
         for disease in disease_list:

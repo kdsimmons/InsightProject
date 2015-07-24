@@ -20,28 +20,29 @@ data analysis files:
 week2_run.sh: old shell script to run through diseases collecting data (no longer useful)
 project_week2.py: old python script to get data for a specified disease (no longer useful)
 make_database.py: python script to get data for all diseases using main function (previously called charities.py)
-clean_sql.py: clean SQL database without rescraping (also add code to charities.py)
+clean_sql.py: clean SQL database without rescraping (duplicate of code to charities.py used when changes are made to the cleaning process)
 
 ipython notebooks:
 10 Minutes to pandas.ipynb: tutorial on pandas module
-first_notebook.ipynb: notebook used for dev setup tutorial
+colon_cancer.ipynb: full analysis of colon cancer charities
+convert_to_mysql.ipynb: work toward getting data into SQL
+clean_sql.ipynb: clean SQL database that's already been created
+customize_search.ipynb: work on tailoring measurement to user specification
 facebook_twitter.ipynb: work toward getting facebook and twitter results
+first_notebook.ipynb: notebook used for dev setup tutorial
 first_analysis.ipynb: old analysis of farmers markets
+get_char_nav_data.ipynb: work on scraping Charity Navigator
 initial_from_csv.ipynb: old script for farmers market list 
+learning_beautiful_soup.ipynb: practice with beautiful soup
+look_at_data.ipynb: exploratory data analysis
 multiple_sclerosis.ipynb: work for week 1 presentation
+machine_learning_practice.ipynb: practice doing machine learning
+make_graphs.ipynb: make graphs and do basic clustering for Week 2
 practice_scraping.ipynb: practice scaping based on tutorial
 project_week2.ipynb: clean code from week 2
 project_week3.ipynb: clean code from week 3
 scraping_databases.ipynb: work toward scraping charity websites
-learning_beautiful_soup.ipynb: practice with beautiful soup
-colon_cancer.ipynb: full analysis of colon cancer charities
-convert_to_mysql.ipynb: work toward getting data into SQL
-get_char_nav_data.ipynb: work on scraping Charity Navigator
-machine_learning_practice.ipynb: practice doing machine learning
-make_graphs.ipynb: make graphs and do basic clustering for Week 2
 scraping_scratch_work.ipynb: notebook for testing out new web scraping code
-clean_sql.ipynb: clean SQL database that's already been created
-look_at_data.ipynb: exploratory data analysis
 
 app files:
 app: files to run project app

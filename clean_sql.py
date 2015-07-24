@@ -142,8 +142,6 @@ def main():
     disease_list = ["alzheimer's disease", "blindness", "breast cancer", "colon cancer", "crohn's disease",
                     "dyslexia", "leukemia", "lung cancer", "multiple sclerosis", "diabetes",
                     "osteoporosis", "parkinson's disease", "prostate cancer", "brain cancer"]
-    disease_list = ["cancer"]
-    #disease_list = ["colon cancer"]
 
     for disease in disease_list:
         clean_disease_name = '_'.join(disease.lower().replace('\'s disease','').split())
