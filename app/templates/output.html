@@ -51,100 +51,7 @@
       </div>
     </nav>
 
-    <br><br>
-
-  <div class="container">
-    <div class="starter-template">
-        <!--<h2>Output Page</h2>-->
-	<br><br>
-        <h4>Choose another type of charity:</h4>
-    </div>
-
-    <div class = "container">
-
-      <form  action="/output" method="GET">
-
-	<!disease: free response>
-        <div class="form-group">
-          <label for="disease">Disease:</label>
-          <input type="text" id="disease" name='disease' placeholder="e.g. cancer">
-        </div>
-
-	<!state: choice of 50>
-        <div class="form-group">
-          <label for="state">State:</label>
-          <input type="text" id="state" name='state' placeholder="e.g. MA">
-        </div>
-
-	<!tax: yes (1) or no (0)>
-        <div class="form-group">
-          <label for="tax_exempt">Tax-exempt:</label>
-          <input type="text" id="tax_exempt" name='tax_exempt' placeholder="e.g. 0 or 1">
-        </div>
-
-	<!BBB: yes (1) or no (0)>
-        <div class="form-group">
-          <label for="bbb_accred">BBB accredited:</label>
-          <input type="text" id="bbb_accred" name='bbb_accred' placeholder="e.g. 0 or 1">
-        </div>
-
-	<!CN: yes (1) or no (0)>
-        <div class="form-group">
-          <label for="cn_rated">Charity Navigator rating:</label>
-          <input type="text" id="cn_rated" name="cn_rated" placeholder="e.g. 0 or 1">
-        </div>
-
-	<!age: young (1) or old (2)>
-        <div class="form-group">
-          <label for="age">Company age:</label>
-          <input type="text" id="age" name='age' placeholder="e.g. 1 or 2">
-        </div>
-
-	<!staff: big (3), medium (2), or small (1)>
-        <div class="form-group">
-          <label for="staff_size">Size of staff:</label>
-          <input type="text" id="staff_size" name="staff_size" placeholder="e.g. 1-3">
-        </div>
-
-	<!board: small (1), medium (2), or big (3)>
-        <div class="form-group">
-          <label for="board_size">Size of board:</label>
-          <input type="text" id="board_size" name="board_size" placeholder="e.g. 1-3">
-        </div>
-
-	<!total fundraising: low (3), medium (2), or high (3)>
-        <div class="form-group">
-          <label for="total_contributions">Total contributions:</label>
-          <input type="text" id="total_contributions" name="total_contributions" placeholder="e.g. 1-3">
-        </div>
-
-	<!total expenses: low (1), medium (2), or high (3)>
-        <div class="form-group">
-          <label for="total_expenses">Total expenses:</label>
-          <input type="text" id="total_expenses" name="total_expenses" placeholder="e.g. 1-3">
-        </div>
-
-	<!percent spent on programming: low (1), medium (2), or high(3)>
-        <div class="form-group">
-          <label for="percent_program">Percent of budget spent on programming:</label>
-          <input type="text" id="percent_program" name="percent_program" placeholder="e.g. 1-3">
-        </div>
-
-	<!social media presence: low (1) or high (2)>
-        <div class="form-group">
-          <label for="twitter_followers">Twitter followers:</label>
-          <input type="text" id="twitter_followers" name="twitter_followers" placeholder="e.g. 1-2">
-        </div>
-
-        <div>
-          <button type="submit" class="btn btn-default btn-lg">Find charities!</button>
-        </div>
-
-      </form>
-    </div>
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="static/js/bootstrap.min.js"></script>
-  </div> <!-- /.container-->
+    <br><br><br>
 
     <div class="container">
       <div class="starter-template">
@@ -219,13 +126,106 @@
 	</tr>
 	{% endfor %}
       </table>
-      
-      <br><br>
-
 <!--Uncomment the following line to print the_result, currently used for debugging.-->
 <!--<p>The result is {{the_result}}.</p>-->
 
      </div><!-- /.container -->
+
+  <div class="container">
+    <div class="starter-template">
+        <!--<h2>Output Page</h2>-->
+	<br><br>
+        <h3>Find another charity:</h3>
+    </div>
+
+    <div class = "container">
+
+      <form  action="/output" method="GET">
+
+	<!disease: free response>
+        <div class="form-group">
+          <label for="disease">Disease:</label>
+          <input type="text" id="disease" name='disease' placeholder="e.g. cancer" value={{the_input['disease']}}>
+        </div>
+
+	<!state: choice of 50>
+        <div class="form-group">
+          <label for="state">State:</label>
+          <input type="text" id="state" name='state' placeholder="e.g. MA" value={{the_input['state']}}>
+        </div>
+
+	<!tax: yes (1) or no (0)>
+        <div class="form-group">
+          <label for="tax_exempt">Tax-exempt:</label>
+          <input type="text" id="tax_exempt" name="tax_exempt" placeholder="e.g. 0 or 1" value={{the_input['tax_exempt']}}>
+        </div>
+
+	<!BBB: yes (1) or no (0)>
+        <div class="form-group">
+          <label for="bbb_accred">BBB accredited:</label>
+          <input type="text" id="bbb_accred" name="bbb_accred" placeholder="e.g. 0 or 1" value={{the_input['bbb_accred']}}>
+        </div>
+
+	<!CN: yes (1) or no (0)>
+        <div class="form-group">
+          <label for="cn_rated">Charity Navigator rating:</label>
+          <input type="text" id="cn_rated" name="cn_rated" placeholder="e.g. 0 or 1" value={{the_input['cn_rated']}}>
+        </div>
+
+	<!age: young (1) or old (2)>
+        <div class="form-group">
+          <label for="age">Company age:</label>
+          <input type="text" id="age" name="age" placeholder="e.g. 1 or 2" value={{the_input['age']}}>
+        </div>
+
+	<!staff: big (3), medium (2), or small (1)>
+        <div class="form-group">
+          <label for="staff_size">Size of staff:</label>
+          <input type="text" id="staff_size" name="staff_size" placeholder="e.g. 1-3" value={{the_input['staff_size']}}>
+        </div>
+
+	<!board: small (1), medium (2), or big (3)>
+        <div class="form-group">
+          <label for="board_size">Size of board:</label>
+          <input type="text" id="board_size" name="board_size" placeholder="e.g. 1-3" value={{the_input['board_size']}}>
+        </div>
+
+	<!total fundraising: low (3), medium (2), or high (3)>
+        <div class="form-group">
+          <label for="total_contributions">Total contributions:</label>
+          <input type="text" id="total_contributions" name="total_contributions" placeholder="e.g. 1-3" value={{the_input['total_contributions']}}>
+        </div>
+
+	<!total expenses: low (1), medium (2), or high (3)>
+        <div class="form-group">
+          <label for="total_expenses">Total expenses:</label>
+          <input type="text" id="total_expenses" name="total_expenses" placeholder="e.g. 1-3" value={{the_input['total_expenses']}}>
+        </div>
+
+	<!percent spent on programming: low (1), medium (2), or high(3)>
+        <div class="form-group">
+          <label for="percent_program">Percent of budget spent on programming:</label>
+          <input type="text" id="percent_program" name="percent_program" placeholder="e.g. 1-3" value={{the_input['percent_program']}}>
+        </div>
+
+	<!social media presence: low (1) or high (2)>
+        <div class="form-group">
+          <label for="twitter_followers">Twitter followers:</label>
+          <input type="text" id="twitter_followers" name="twitter_followers" placeholder="e.g. 1-2" value={{the_input['twitter_followers']}}>
+        </div>
+
+        <div>
+          <button type="submit" class="btn btn-default btn-lg">Find charities!</button>
+        </div>
+
+      </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+  </div> <!-- /.container-->
+
+      
+      <br><br>
 
 <!--    <div class="container">
       <div class="starter-template">
