@@ -463,12 +463,13 @@ def convert_to_sql(pandadf,disease):
 # Define main() function to go through diseases and pull charity info.
 def main():
     # Cycle through diseases
-    disease_list = ["alzheimer's disease", "blindness", "breast cancer", "colon cancer", "crohn's disease",
+    disease_list = ["alzheimer's disease", "blindness", "breast cancer", "colon cancer", "colorectal cancer", 
+                    "crohn's disease", "melanoma", "lymphoma",
                     "dyslexia", "leukemia", "lung cancer", "multiple sclerosis", "diabetes",
-                    "osteoporosis", "parkinson's disease", "prostate cancer", "brain cancer", "cancer"]
-    disease_list = ["brain cancer", "cancer"]
+                    "osteoporosis", "parkinson's disease", "prostate cancer", "brain cancer", "cancer", "tumor"]
+    #disease_list = ["brain cancer", "cancer"]
     #disease_list = ["colon cancer"]
-    disease_list = ["tumor"] # 'malignant' and 'oncology' have 1 each; 'neoplasm' has 0
+    #disease_list = ["tumor"] # 'malignant' and 'oncology' have 1 each; 'neoplasm' has 0
 
     for disease in disease_list:
         clean_disease_name = ' '.join(disease.lower().replace('\'s disease','').split())

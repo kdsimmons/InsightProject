@@ -19,7 +19,7 @@ test_db.py: test that MySQL is working
 data analysis files:
 week2_run.sh: old shell script to run through diseases collecting data (no longer useful)
 project_week2.py: old python script to get data for a specified disease (no longer useful)
-charities.py: python script to get data for all diseases using main function
+make_database.py: python script to get data for all diseases using main function (previously called charities.py)
 clean_sql.py: clean SQL database without rescraping (also add code to charities.py)
 
 ipython notebooks:

@@ -63,13 +63,77 @@
     <div class = "container">
 
       <form  action="/output" method="GET">
+
+	<!disease: free response>
         <div class="form-group">
           <label for="disease">Disease:</label>
-          <input type="text" id="disease" name='disease' placeholder="e.g. multiple sclerosis">
+          <input type="text" id="disease" name='disease' placeholder="e.g. cancer">
         </div>
+
+	<!state: choice of 50>
         <div class="form-group">
           <label for="state">State:</label>
-          <input type="text" id="state" name='state' placeholder="e.g. PA">
+          <input type="text" id="state" name='state' placeholder="e.g. MA">
+        </div>
+
+	<!tax: yes (1) or no (0)>
+        <div class="form-group">
+          <label for="tax_exempt">Tax-exempt:</label>
+          <input type="text" id="tax_exempt" name='tax_exempt' placeholder="e.g. 0 or 1">
+        </div>
+
+	<!BBB: yes (1) or no (0)>
+        <div class="form-group">
+          <label for="bbb_accred">BBB accredited:</label>
+          <input type="text" id="bbb_accred" name='bbb_accred' placeholder="e.g. 0 or 1">
+        </div>
+
+	<!CN: yes (1) or no (0)>
+        <div class="form-group">
+          <label for="cn_rated">Charity Navigator rating:</label>
+          <input type="text" id="cn_rated" name="cn_rated" placeholder="e.g. 0 or 1">
+        </div>
+
+	<!age: young (1) or old (2)>
+        <div class="form-group">
+          <label for="age">Company age:</label>
+          <input type="text" id="age" name='age' placeholder="e.g. 1 or 2">
+        </div>
+
+	<!staff: big (3), medium (2), or small (1)>
+        <div class="form-group">
+          <label for="staff_size">Size of staff:</label>
+          <input type="text" id="staff_size" name="staff_size" placeholder="e.g. 1-3">
+        </div>
+
+	<!board: small (1), medium (2), or big (3)>
+        <div class="form-group">
+          <label for="board_size">Size of board:</label>
+          <input type="text" id="board_size" name="board_size" placeholder="e.g. 1-3">
+        </div>
+
+	<!total fundraising: low (3), medium (2), or high (3)>
+        <div class="form-group">
+          <label for="total_contributions">Total contributions:</label>
+          <input type="text" id="total_contributions" name="total_contributions" placeholder="e.g. 1-3">
+        </div>
+
+	<!total expenses: low (1), medium (2), or high (3)>
+        <div class="form-group">
+          <label for="total_expenses">Total expenses:</label>
+          <input type="text" id="total_expenses" name="total_expenses" placeholder="e.g. 1-3">
+        </div>
+
+	<!percent spent on programming: low (1), medium (2), or high(3)>
+        <div class="form-group">
+          <label for="percent_program">Percent of budget spent on programming:</label>
+          <input type="text" id="percent_program" name="percent_program" placeholder="e.g. 1-3">
+        </div>
+
+	<!social media presence: low (1) or high (2)>
+        <div class="form-group">
+          <label for="twitter_followers">Twitter followers:</label>
+          <input type="text" id="twitter_followers" name="twitter_followers" placeholder="e.g. 1-2">
         </div>
 
         <div>
@@ -84,22 +148,36 @@
 
     <div class="container">
       <div class="starter-template">
-        <h3>Results:</h3>
+        <h3>Recommended charities with a focus on {{the_focus}}:</h3>
 	<p id="error-message" class="lead">{{custom_error}}</p>
       </div>
 
       <table class="table table-hover">
 	<tr>
+	  <th>Rank</th>
 	  <th>Name</th>
 	  <th>Address</th>
 	  <th>City</th>
+	  <th>Tax-exempt?</th>
+	  <th>BBB Accredited?</th>
 	  <th>Charity Navigator Score</th>
-	  <th>BBB Accreditation</th>
+	  <th>Financial Health</th>	
+	  <th>Accountability and Transparency</th>	
+	  <th>Year Founded</th>	
+	  <th>Staff Size</th>
+	  <th>Board Size</th>
+	  <th>Total Contributions</th>
+	  <th>Total Expenses</th>
+	  <th>Program Expenses</th>
+	  <th>Administrative Expenses</th>
+	  <th>Fundraising Expenses</th>
 	  <th>Twitter Followers</th>
 	</tr>
 
 	{% for charity in charities %}
 	<tr>
+	  <td>{{charity['rank']}}</td>
+
 	  {% if charity['link'] %}
 	  <td><a href={{charity['link']}} id="website">{{charity['name']}}</a></td>
 	  {% else %}
@@ -108,18 +186,30 @@
 
 	  <td>{{charity['address']}}</td>
 	  <td>{{charity['city']}}</td>
-
-	  {% if charity['cn_link'] %}
-	  <td><a href={{charity['cn_link']}} id="charity-navigator">{{charity['cn_overall']}}</a></td>
-	  {% else %}
-	  <td>{{charity['cn_overall']}}</td>
-	  {% endif %}
+	  <td>{{charity['tax_exempt']}}</td>
 
 	  {% if charity['bbb_link'] %}
 	  <td><a href={{charity['bbb_link']}} id="bbb">{{charity['bbb_accred']}}</a></td>
 	  {% else %}
 	  <td>{{charity['bbb_accred']}}</td>
 	  {% endif %}
+
+	  {% if charity['cn_link'] %}
+	  <td><a href={{charity['cn_link']}} id="charity-navigator">{{charity['cn_overall']}}</a></td>
+	  {% else %}
+	  <td>{{charity['cn_overall']}}</td>
+	  {% endif %}
+	  <td>{{charity['cn_financial']}}</td>
+	  <td>{{charity['cn_acct_transp']}}</td>
+
+	  <td>{{charity['year_incorporated']}}</td>
+	  <td>{{charity['staff_size']}}</td>
+	  <td>{{charity['board_size']}}</td>
+	  <td>{{charity['total_contributions']}}</td>
+	  <td>{{charity['total_expenses']}}</td>
+	  <td>{{charity['percent_program']}}%</td>
+	  <td>{{charity['percent_admin']}}%</td>
+	  <td>{{charity['percent_fund']}}%</td>
 
 	  {% if charity['twitter_link'] %}
 	  <td><a href={{charity['twitter_link']}} id="twitter">{{charity['twitter_followers']}}</a></td>

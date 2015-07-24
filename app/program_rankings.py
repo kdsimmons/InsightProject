@@ -1,5 +1,107 @@
 import pandas as pd
 import numpy as np
+import pymysql as mdb
+
+mysqlauth = pd.DataFrame.from_csv('/home/kristy/Documents/auth_codes/mysql_user.csv')
+sqluser = mysqlauth.username[0]
+sqlpass = mysqlauth.password[0]
+
+con = mdb.connect(user=sqluser, host="localhost", db="charity_data", password=sqlpass, charset='utf8')
+
+# Convert user input to actual targets.
+def convert_prefs_to_ideal(pref_list):
+    # Construct initial dataframe
+    ideal_df = pd.DataFrame(columns=pref_list.viewkeys(), index=[1000], dtype='float64')
+
+    # Read in SQL data to get distributions for some variables.
+    combined_panda = pd.DataFrame()
+    disease_list = ['alzheimer', 'blindness', 'breast_cancer', 'colon_cancer', 'crohn', 'diabetes',
+                    'dyslexia', 'leukemia', 'lung_cancer', 'multiple_sclerosis', 'osteoporosis',
+                    'parkinson', 'prostate_cancer', 'cancer', 'tumor', 'melanoma', 'lymphoma']
+    with con:
+        for disease in disease_list:
+            pandadf = pd.read_sql("SELECT  year_incorporated, age, twitter_followers, percent_program, total_contributions, total_expenses, staff_size, board_size FROM " + str(disease), con)
+            if len(pandadf) > 0:
+                combined_panda = pd.concat([combined_panda, pandadf], 0, ignore_index=True)
+
+    # Fix NaNs that were originally encoded as -1.
+    for idx in range(len(combined_panda)):
+        if combined_panda['year_incorporated'][idx] == -1:
+            combined_panda[idx:(idx+1)]['age'] = np.nan
+            combined_panda[idx:(idx+1)]['year_incorporated'] = np.nan
+        for col in combined_panda.columns:
+            if combined_panda[col][idx] == -1:
+                combined_panda[idx:(idx+1)][col] = np.nan
+
+    # Booleans are just scored as important or not.
+    for col in ['bbb_accred', 'cn_rated', 'tax_exempt']:
+        if pref_list[col] == 0:
+            ideal_df[:][col] = np.nan
+        elif pref_list[col] == 1:
+            ideal_df[:][col] = 1.
+        else:
+            raise Exception('Improper input for ' + str(col) + ': ' + str(pref_list[col]) + ' (' + str(type(pref_list[col])) + ').')
+
+    # Numerical values are defined based on the overall distribution.
+    # Put in ideal values for variables with 2 possible values
+    for col in ['age','twitter_followers']:
+        quantiles = combined_panda[col].describe(percentile_width=50.)
+        if pref_list[col] == 0:
+            ideal_df[:][col] = np.nan
+        elif  pref_list[col] == 1:
+            ideal_df[:][col] = quantiles['25%']
+        elif pref_list[col] == 2:
+            ideal_df[:][col] = quantiles['75%']
+        else:
+            raise Exception('Improper input for ' + str(col) + ': ' + str(pref_list[col]) + ' (' + str(type(pref_list[col])) + ').')
+
+    # Put in ideal values for variables with 3 possible values
+    for col in ['staff_size','board_size','total_contributions','total_expenses','percent_program']:
+        quantiles = combined_panda[col].describe(percentile_width=66.7)    
+        if pref_list[col] == 0:
+            ideal_df[:][col] = np.nan
+        elif  pref_list[col] == 1:
+            ideal_df[:][col] = quantiles['16.6%']
+        elif pref_list[col] == 2:
+            ideal_df[:][col] = quantiles['50%']
+        elif pref_list[col] == 3:
+            ideal_df[:][col] = quantiles['83.4%']
+        else:
+            raise Exception('Improper input for ' + str(col) + ': ' + str(pref_list[col]) + ' (' + str(type(pref_list[col])) + ').')
+
+    # At least for now, some values are hardcoded in calling function
+    for col in ['cn_overall','cn_financial','cn_acct_transp','total_revenue']:
+        ideal_df[:][col] = pref_list[col]
+
+    # At least for now, some values are hardcoded here
+    for col in ['percent_admin','percent_fund']:
+        ideal_df[col] = (100. - ideal_df['percent_program']) / 2.
+
+    return ideal_df
+
+# Clean up data after transfering through SQL.
+def clean_data(data_df):
+    # Change integers to floats so that NaNs work
+    for col in data_df.columns:
+        if data_df[col].dtype == 'int':
+            data_df[col] = data_df[col].astype('float')
+    data_df.dtypes # Without this line, the conversion doesn't work. I have no idea why.
+
+    # Fix NaNs that were originally encoded as -1
+    for idx in range(len(data_df)):
+        if data_df['cn_rated'][idx] <= 0:
+            for col in ['cn_overall', 'cn_acct_transp', 'cn_financial', 'percent_admin', 'percent_fund', 'percent_program', 
+                        'total_contributions', 'total_expenses', 'total_revenue']:
+                data_df[idx:(idx+1)][col] = np.nan
+        if data_df['year_incorporated'][idx] == -1:
+            data_df[idx:(idx+1)]['age'] = np.nan
+            data_df[idx:(idx+1)]['year_incorporated'] = np.nan
+        for col in data_df.columns:
+            if data_df[col][idx] == -1:
+                data_df[idx:(idx+1)][col] = np.NaN
+
+    return data_df
+
 
 # Define Gower similarity metric for a single row.
 def gower_similarity(data_df,ref_df):
@@ -16,8 +118,8 @@ def gower_similarity(data_df,ref_df):
     for idx in range(len(feature_names)):
         col = feature_names[idx]
         if ref_df[col].dtype == 'bool':
-            sim[idx] = any(ref_df[col] == True) and data_df[col] == 1
-            wgt[idx] = any(ref_df[col] == True) or data_df[col] == 1
+            sim[idx] = any(ref_df[col] == 1) and data_df[col] == 1
+            wgt[idx] = any(ref_df[col] == 1) or data_df[col] == 1
         elif ref_df[col].dtype in ['float', 'int']:
             sim[idx] = 1 - np.absolute(np.sum(ref_df[col]) - np.sum(data_df[col]))
             wgt[idx] = any(np.isfinite(ref_df[col])) and np.isfinite(data_df[col])
@@ -33,6 +135,9 @@ def rank_programs(fulldf = pd.DataFrame(np.empty([0,0])), ideal_org = pd.DataFra
     # Check input
     if fulldf.empty:
         return fulldf
+
+    # Clean up missing data
+    fulldf = clean_data(fulldf)
 
     # Set up parameters
     max_output = 10 # number of organizations to print
@@ -57,7 +162,7 @@ def rank_programs(fulldf = pd.DataFrame(np.empty([0,0])), ideal_org = pd.DataFra
 
     # Merge distances with other data
     fulldf['gower'] = dists   
-
+    
     # Find best charities based on distance metric.
     fulldf.sort(columns='gower', ascending=False, inplace=True)
     fulldf['rank'] = range(1,len(fulldf)+1)
