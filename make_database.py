@@ -162,7 +162,7 @@ def get_twitter_followers(charities):
                 user = api.get_user(twitterid)
                 charity['twitter_followers'] = user.followers_count
             except:
-                charity['twitter_followers'] = 0
+                charity['twitter_followers'] = -1
                 continue
                 
     return charities
@@ -191,16 +191,16 @@ def get_char_nav_info(dictlist):
                 print charity['name'] + ": No Charity Navigator link."
                 charity['cn_link'] = ''
                 charity['cn_rated'] = ''
-            charity['cn_overall'] = 0
-            charity['cn_financial'] = 0
-            charity['cn_acct_transp'] = 0
+            charity['cn_overall'] = -1.
+            charity['cn_financial'] = -1.
+            charity['cn_acct_transp'] = -1.
             charity['leader_compensation'] = ''
-            charity['total_contributions'] = 0
-            charity['total_expenses'] = 0
-            charity['total_revenue'] = 0
-            charity['percent_admin'] = 0
-            charity['percent_fund'] = 0
-            charity['percent_program'] = 0
+            charity['total_contributions'] = -1
+            charity['total_expenses'] = -1
+            charity['total_revenue'] = -1
+            charity['percent_admin'] = -1.
+            charity['percent_fund'] = -1.
+            charity['percent_program'] = -1.
             continue
         
         # get Charity Navigator data 
@@ -215,19 +215,19 @@ def get_char_nav_info(dictlist):
             charity['cn_overall'] = float(overall_tags[0].parent.nextSibling.nextSibling.text)
         else:
             print charity['name'] + ": No Overall cells."
-            charity['cn_overall'] = 0.
+            charity['cn_overall'] = -1.
         # include financial rating
         if len(fin_tags) >= 1:
             charity['cn_financial'] = float(fin_tags[0].parent.nextSibling.nextSibling.text)
         else:
             print "No Financial cells"
-            charity['cn_financial'] = 0.
+            charity['cn_financial'] = -1.
         # include accountability rating
         if len(acct_tags) >= 1:
             charity['cn_acct_transp'] = float(acct_tags[0].parent.nextSibling.nextSibling.text)
         else:
             print "No Accountability & Transparency cells"
-            charity['cn_acct_transp'] = 0.
+            charity['cn_acct_transp'] = -1.
          
         # compensation of leaders
         compensation = []
@@ -324,8 +324,9 @@ def get_char_nav_info(dictlist):
 
 def clean_features(pandadf):
     # Get organization age
-    pandadf['year_incorporated'][pandadf['year_incorporated'] == 0] = -1
     pandadf['age'] = 2015 - pandadf['year_incorporated']
+    pandadf['year_incorporated'][pandadf['year_incorporated'] == 0] = -1
+    pandadf['age'][pandadf['year_incorporated'] == -1] = -1
 
     # Get state
     def extract_state(city_unicode):

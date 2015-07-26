@@ -13,25 +13,10 @@ def convert_prefs_to_ideal(pref_list):
     # Construct initial dataframe
     ideal_df = pd.DataFrame(columns=pref_list.viewkeys(), index=[1000], dtype='float64')
 
-    # Read in SQL data to get distributions for some variables.
-    combined_panda = pd.DataFrame()
-    disease_list = ['alzheimer', 'blindness', 'breast_cancer', 'colon_cancer', 'crohn', 'diabetes',
-                    'dyslexia', 'leukemia', 'lung_cancer', 'multiple_sclerosis',
-                    'parkinson', 'prostate_cancer', 'cancer', 'tumor', 'melanoma', 'lymphoma']
+    # Read in SQL data with distributions for some variables.
     with con:
-        for disease in disease_list:
-            pandadf = pd.read_sql("SELECT  year_incorporated, age, twitter_followers, percent_program, total_contributions, total_expenses, staff_size, board_size FROM " + str(disease), con)
-            if len(pandadf) > 0:
-                combined_panda = pd.concat([combined_panda, pandadf], 0, ignore_index=True)
-
-    # Fix NaNs that were originally encoded as -1.
-    for idx in range(len(combined_panda)):
-        if combined_panda['year_incorporated'][idx] == -1:
-            combined_panda[idx:(idx+1)]['age'] = np.nan
-            combined_panda[idx:(idx+1)]['year_incorporated'] = np.nan
-        for col in combined_panda.columns:
-            if combined_panda[col][idx] == -1:
-                combined_panda[idx:(idx+1)][col] = np.nan
+        distribution = pd.read_sql("SELECT * FROM distribution", con)
+    distribution.index = distribution.distidx    
 
     # Booleans are just scored as important or not.
     for col in ['bbb_accred', 'cn_rated', 'tax_exempt']:
@@ -42,31 +27,29 @@ def convert_prefs_to_ideal(pref_list):
         else:
             raise Exception('Improper input for ' + str(col) + ': ' + str(pref_list[col]) + ' (' + str(type(pref_list[col])) + ').')
 
+
     # Numerical values are defined based on the overall distribution.
-    # TO DO: Use pre-computed distributions rather than reading in SQL data on the fly.
     # Put in ideal values for variables with 2 possible values
     for col in ['age','twitter_followers']:
-        quantiles = combined_panda[col].describe(percentile_width=50.)
         if pref_list[col] == 0:
             ideal_df[:][col] = np.nan
         elif  pref_list[col] == 1:
-            ideal_df[:][col] = quantiles['25%']
+            ideal_df[:][col] = distribution.loc['p25',col]
         elif pref_list[col] == 2:
-            ideal_df[:][col] = quantiles['75%']
+            ideal_df[:][col] = distribution.loc['p75',col]
         else:
             raise Exception('Improper input for ' + str(col) + ': ' + str(pref_list[col]) + ' (' + str(type(pref_list[col])) + ').')
 
     # Put in ideal values for variables with 3 possible values
     for col in ['staff_size','board_size','total_contributions','total_expenses','percent_program']:
-        quantiles = combined_panda[col].describe(percentile_width=66.7)    
         if pref_list[col] == 0:
             ideal_df[:][col] = np.nan
         elif  pref_list[col] == 1:
-            ideal_df[:][col] = quantiles['16.6%']
+            ideal_df[:][col] = distribution.loc['p17',col]
         elif pref_list[col] == 2:
-            ideal_df[:][col] = quantiles['50%']
+            ideal_df[:][col] = distribution.loc['p50',col]
         elif pref_list[col] == 3:
-            ideal_df[:][col] = quantiles['83.4%']
+            ideal_df[:][col] = distribution.loc['p83',col]
         else:
             raise Exception('Improper input for ' + str(col) + ': ' + str(pref_list[col]) + ' (' + str(type(pref_list[col])) + ').')
 

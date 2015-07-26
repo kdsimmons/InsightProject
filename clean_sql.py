@@ -17,29 +17,15 @@ def clean_sql(disease):
     with con:
         pandadf = pd.read_sql("SELECT * FROM " + str(disease), con)
     
-    # Get organization age
-    
-    pandadf['year_incorporated'][pandadf['year_incorporated'] == 0] = np.nan
-    pandadf['age'] = 2015 - pandadf['year_incorporated']
-
-    # Get state
-    def extract_state(city_unicode):
-        match = re.search(', ([A-Z][A-Z]) [0-9]+', city_unicode)
-        if match:
-            return match.group(1)
-        else:
-            return ''
-    pandadf['state'] = pandadf['city'].apply(extract_state)
-
-    # Convert tax-exempt status to 0/1
-    pandadf['tax_exempt'] = pandadf['tax_status'].apply(lambda x: int(x.find('is tax-exempt under section 501(c)(3)') > -1))
-    pandadf[:10][['tax_exempt','tax_status']]
-
-    # Convert CN rating to 0/1
-    pandadf['cn_rated'] = pandadf['cn_rated'].apply(lambda x: int(x == u'Rated'))
-
-    # Convert BBB accreditation to 0/1
-    pandadf['bbb_accred'] = pandadf['bbb_accred'].apply(lambda x: int(x == u'\nAccredited: Yes\n' or x == u'Accredited Charity'))
+    # Convert 'missing' 0's to -1's
+    for idx in range(len(pandadf)):
+        for col in ['cn_overall', 'cn_financial', 'cn_acct_transp', 'percent_admin', 'percent_fund', 'percent_program', 'total_contributions', 'total_expenses', 'total_revenue', 'twitter_followers']:
+            if pandadf[col].dtype == 'float':
+                if pandadf[col][idx] == 0.0:
+                    pandadf[idx:(idx+1)][col] = -1.
+            elif pandadf[col].dtype == 'int':
+                if pandadf[col][idx] == 0:
+                    pandadf[idx:(idx+1)][col] = -1
     
     # Save cleaned dataframe to SQL
     table_name = disease
@@ -139,9 +125,7 @@ def clean_sql(disease):
 # Main function
 def main():
     # Cycle through diseases
-    disease_list = ["alzheimer's disease", "blindness", "breast cancer", "colon cancer", "crohn's disease",
-                    "dyslexia", "leukemia", "lung cancer", "multiple sclerosis", "diabetes",
-                    "osteoporosis", "parkinson's disease", "prostate cancer", "brain cancer"]
+    disease_list = ['alzheimer', 'aids', 'als', 'autism', 'blindness', 'breast_cancer', 'colon_cancer', 'colorectal_cancer', 'cystic_fibrosis', 'crohn', 'diabetes', 'dyslexia', 'leukemia', 'lung_cancer', 'multiple_sclerosis', 'parkinson', 'prostate_cancer', 'cancer', 'tumor', 'melanoma', 'lymphoma', 'fibromyalgia', 'colitis', 'lupus', 'pancreatic_cancer', 'ovarian_cancer']
 
     for disease in disease_list:
         clean_disease_name = '_'.join(disease.lower().replace('\'s disease','').split())

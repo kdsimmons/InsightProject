@@ -62,78 +62,144 @@
 
     <div class = "container">
 
-      <form  action="/output" method="GET">
+      <form  action="/output" method="GET" class="form-horizontal">
 
 	<!disease: free response>
         <div class="form-group">
-          <label for="disease">Disease:</label>
+          <label class="control-label col-sm-2" for="disease">Disease:</label>
+	  <div class="col-sm-20">
           <input type="text" id="disease" name='disease' placeholder="e.g. cancer">
+	  </div>
         </div>
 
 	<!state: choice of 50>
         <div class="form-group">
-          <label for="state">State:</label>
+          <label class="control-label col-sm-2" for="state">State:</label>
+	  <div class="col-sm-20">
           <input type="text" id="state" name='state' placeholder="e.g. MA">
+	  </div>
         </div>
 
 	<!tax: yes (1) or no (0)>
         <div class="form-group">
-          <label for="tax_exempt">Tax-exempt:</label>
-          <input type="text" id="tax_exempt" name='tax_exempt' placeholder="e.g. 0 or 1">
+          <label class="control-label col-sm-2" for="tax_exempt">Tax-exempt:</label>
+	  <div class="col-sm-2">
+	    <select class="form-control" id="tax_exempt" name="tax_exempt">
+	      <option value="0">No preference</option>
+	      <option value="1">Yes</option>
+	    </select>
+	  </div>
         </div>
 
 	<!BBB: yes (1) or no (0)>
         <div class="form-group">
-          <label for="bbb_accred">BBB accredited:</label>
-          <input type="text" id="bbb_accred" name='bbb_accred' placeholder="e.g. 0 or 1">
+          <label class="control-label col-sm-2" for="bbb_accred">BBB accredited:</label>
+	  <div class="col-sm-2">
+	    <select class="form-control" id="bbb_accred" name="bbb_accred">
+	      <option value="0">No preference</option>
+	      <option value="1">Yes</option>
+	    </select>
+	  </div>
         </div>
 
 	<!CN: yes (1) or no (0)>
         <div class="form-group">
-          <label for="cn_rated">Charity Navigator rating:</label>
-          <input type="text" id="cn_rated" name="cn_rated" placeholder="e.g. 0 or 1">
+          <label class="control-label col-sm-2" for="cn_rated">Charity Navigator rating:</label>
+	  <div class="col-sm-2">
+	    <select class="form-control" id="cn_rated" name="cn_rated">
+	      <option value="0">No preference</option>
+	      <option value="1">Yes</option>
+	    </select>
+	  </div>
         </div>
 
 	<!age: young (1) or old (2)>
         <div class="form-group">
-          <label for="age">Company age:</label>
-          <input type="text" id="age" name='age' placeholder="e.g. 1 or 2">
+          <label class="control-label col-sm-2" for="age">Company age:</label>
+	  <div class="col-sm-2">
+	    <select class="form-control" id="age" name="age">
+	      <option value="0">No preference</option>
+	      <option value="1">Young</option>
+	      <option value="2">Old</option>
+	    </select>
+	  </div>
         </div>
 
 	<!staff: big (3), medium (2), or small (1)>
         <div class="form-group">
-          <label for="staff_size">Size of staff:</label>
-          <input type="text" id="staff_size" name="staff_size" placeholder="e.g. 1-3">
+          <label class="control-label col-sm-2" for="staff_size">Size of staff:</label>
+	  <div class="col-sm-2">
+	    <select class="form-control" id="staff_size" name="staff_size">
+	      <option value="0">No preference</option>
+	      <option value="1">Small</option>
+	      <option value="2">Medium</option>
+	      <option value="3">Large</option>
+	    </select>
+	  </div>
         </div>
 
 	<!board: small (1), medium (2), or big (3)>
         <div class="form-group">
-          <label for="board_size">Size of board:</label>
-          <input type="text" id="board_size" name="board_size" placeholder="e.g. 1-3">
+          <label class="control-label col-sm-2" for="board_size">Size of board:</label>
+	  <div class="col-sm-2">
+	    <select class="form-control" id="board_size" name="board_size">
+	      <option value="0">No preference</option>
+	      <option value="1">Small</option>
+	      <option value="2">Medium</option>
+	      <option value="3">Large</option>
+	    </select>
+	  </div>
         </div>
 
 	<!total fundraising: low (3), medium (2), or high (3)>
         <div class="form-group">
-          <label for="total_contributions">Total contributions:</label>
-          <input type="text" id="total_contributions" name="total_contributions" placeholder="e.g. 1-3">
+          <label class="control-label col-sm-2" for="total_contributions">Total contributions:</label>
+	  <div class="col-sm-2">
+	    <select class="form-control" id="total_contributions" name="total_contributions">
+	      <option value="0">No preference</option>
+	      <option value="1">Low</option>
+	      <option value="2">Medium</option>
+	      <option value="3">High</option>
+	    </select>
+	  </div>
         </div>
 
 	<!total expenses: low (1), medium (2), or high (3)>
         <div class="form-group">
-          <label for="total_expenses">Total expenses:</label>
-          <input type="text" id="total_expenses" name="total_expenses" placeholder="e.g. 1-3">
+          <label class="control-label col-sm-2" for="total_expenses">Total expenses:</label>
+	  <div class="col-sm-2">
+	    <select class="form-control" id="total_expenses" name="total_expenses">
+	      <option value="0">No preference</option>
+	      <option value="1">Low</option>
+	      <option value="2">Medium</option>
+	      <option value="3">High</option>
+	    </select>
+	  </div>
         </div>
 
 	<!percent spent on programming: low (1), medium (2), or high(3)>
         <div class="form-group">
-          <label for="percent_program">Percent of budget spent on programming:</label>
-          <input type="text" id="percent_program" name="percent_program" placeholder="e.g. 1-3">
+          <label class="control-label col-sm-2" for="percent_program">Percent of budget spent on programming:</label>
+	  <div class="col-sm-2">
+	    <select class="form-control" id="percent_program" name="percent_program">
+	      <option value="0">No preference</option>
+	      <option value="1">Low</option>
+	      <option value="2">Medium</option>
+	      <option value="3">High</option>
+	    </select>
+	  </div>
         </div>
 
 	<!social media presence: low (1) or high (2)>
         <div class="form-group">
-          <label for="twitter_followers">Twitter followers:</label>
-          <input type="text" id="twitter_followers" name="twitter_followers" placeholder="e.g. 1-2">
+          <label class="control-label col-sm-2" for="twitter_followers">Twitter followers:</label>
+	  <div class="col-sm-2">
+	    <select class="form-control" id="twitter_followers" name="twitter_followers">
+	      <option value="0">No preference</option>
+	      <option value="1">Low</option>
+	      <option value="2">High</option>
+	    </select>
+	  </div>
         </div>
 
         <div>

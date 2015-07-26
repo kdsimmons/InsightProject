@@ -40,7 +40,7 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="#">FindACharity</a>
-        </div>
+        </div> <!-- navbar-header -->
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
@@ -48,16 +48,17 @@
             <li><a href="#contact">Contact</a></li>
           </ul>
         </div><!--/.nav-collapse -->
-      </div>
+      </div><!-- container -->
     </nav>
 
     <br><br><br>
 
+    <!-- Container with output for last search -->
     <div class="container">
       <div class="starter-template">
         <h3>Recommended charities with a focus on {{the_focus}}:</h3>
 	<p id="error-message" class="lead">{{custom_error}}</p>
-      </div>
+      </div><!-- starter-template -->
 
       <table class="table table-hover">
 	<tr>
@@ -129,89 +130,155 @@
 <!--Uncomment the following line to print the_result, currently used for debugging.-->
 <!--<p>The result is {{the_result}}.</p>-->
 
-     </div><!-- /.container -->
+     </div><!-- /.container --><!-- end of output table -->
 
+  <!-- List of input for new search -->
   <div class="container">
     <div class="starter-template">
-        <!--<h2>Output Page</h2>-->
 	<br><br>
         <h3>Find another charity:</h3>
-    </div>
+    </div><!-- starter-termplate -->
 
     <div class = "container">
 
-      <form  action="/output" method="GET">
+      <form  action="/output" method="GET" class="form-horizontal">
 
 	<!disease: free response>
         <div class="form-group">
-          <label for="disease">Disease:</label>
+          <label class="control-label col-sm-2" for="disease">Disease:</label>
+	  <div class="col-sm-20">
           <input type="text" id="disease" name='disease' placeholder="e.g. cancer" value={{the_input['disease']}}>
+	  </div>
         </div>
 
 	<!state: choice of 50>
         <div class="form-group">
-          <label for="state">State:</label>
+          <label class="control-label col-sm-2" for="state">State:</label>
+	  <div class="col-sm-20">
           <input type="text" id="state" name='state' placeholder="e.g. MA" value={{the_input['state']}}>
+	  </div>
         </div>
 
 	<!tax: yes (1) or no (0)>
         <div class="form-group">
-          <label for="tax_exempt">Tax-exempt:</label>
-          <input type="text" id="tax_exempt" name="tax_exempt" placeholder="e.g. 0 or 1" value={{the_input['tax_exempt']}}>
+          <label class="control-label col-sm-2" for="tax_exempt">Tax-exempt:</label>
+	  <div class="col-sm-2">
+	    <select class="form-control" id="tax_exempt" name="tax_exempt">
+	      <option value="0">No preference</option>
+	      <option value="1">Yes</option>
+	    </select>
+	  </div>
         </div>
 
 	<!BBB: yes (1) or no (0)>
         <div class="form-group">
-          <label for="bbb_accred">BBB accredited:</label>
-          <input type="text" id="bbb_accred" name="bbb_accred" placeholder="e.g. 0 or 1" value={{the_input['bbb_accred']}}>
+          <label class="control-label col-sm-2" for="bbb_accred">BBB accredited:</label>
+	  <div class="col-sm-2">
+	    <select class="form-control" id="bbb_accred" name="bbb_accred">
+	      <option value="0">No preference</option>
+	      <option value="1">Yes</option>
+	    </select>
+	  </div>
         </div>
 
 	<!CN: yes (1) or no (0)>
         <div class="form-group">
-          <label for="cn_rated">Charity Navigator rating:</label>
-          <input type="text" id="cn_rated" name="cn_rated" placeholder="e.g. 0 or 1" value={{the_input['cn_rated']}}>
+          <label class="control-label col-sm-2" for="cn_rated">Charity Navigator rating:</label>
+	  <div class="col-sm-2">
+	    <select class="form-control" id="cn_rated" name="cn_rated">
+	      <option value="0">No preference</option>
+	      <option value="1">Yes</option>
+	    </select>
+	  </div>
         </div>
 
 	<!age: young (1) or old (2)>
         <div class="form-group">
-          <label for="age">Company age:</label>
-          <input type="text" id="age" name="age" placeholder="e.g. 1 or 2" value={{the_input['age']}}>
+          <label class="control-label col-sm-2" for="age">Company age:</label>
+	  <div class="col-sm-2">
+	    <select class="form-control" id="age" name="age">
+	      <option value="0">No preference</option>
+	      <option value="1">Young</option>
+	      <option value="2">Old</option>
+	    </select>
+	  </div>
         </div>
 
 	<!staff: big (3), medium (2), or small (1)>
         <div class="form-group">
-          <label for="staff_size">Size of staff:</label>
-          <input type="text" id="staff_size" name="staff_size" placeholder="e.g. 1-3" value={{the_input['staff_size']}}>
+          <label class="control-label col-sm-2" for="staff_size">Size of staff:</label>
+	  <div class="col-sm-2">
+	    <select class="form-control" id="staff_size" name="staff_size">
+	      <option value="0">No preference</option>
+	      <option value="1">Small</option>
+	      <option value="2">Medium</option>
+	      <option value="3">Large</option>
+	    </select>
+	  </div>
         </div>
 
 	<!board: small (1), medium (2), or big (3)>
         <div class="form-group">
-          <label for="board_size">Size of board:</label>
-          <input type="text" id="board_size" name="board_size" placeholder="e.g. 1-3" value={{the_input['board_size']}}>
+          <label class="control-label col-sm-2" for="board_size">Size of board:</label>
+	  <div class="col-sm-2">
+	    <select class="form-control" id="board_size" name="board_size">
+	      <option value="0">No preference</option>
+	      <option value="1">Small</option>
+	      <option value="2">Medium</option>
+	      <option value="3">Large</option>
+	    </select>
+	  </div>
         </div>
 
 	<!total fundraising: low (3), medium (2), or high (3)>
         <div class="form-group">
-          <label for="total_contributions">Total contributions:</label>
-          <input type="text" id="total_contributions" name="total_contributions" placeholder="e.g. 1-3" value={{the_input['total_contributions']}}>
+          <label class="control-label col-sm-2" for="total_contributions">Total contributions:</label>
+	  <div class="col-sm-2">
+	    <select class="form-control" id="total_contributions" name="total_contributions">
+	      <option value="0">No preference</option>
+	      <option value="1">Low</option>
+	      <option value="2">Medium</option>
+	      <option value="3">High</option>
+	    </select>
+	  </div>
         </div>
 
 	<!total expenses: low (1), medium (2), or high (3)>
         <div class="form-group">
-          <label for="total_expenses">Total expenses:</label>
-          <input type="text" id="total_expenses" name="total_expenses" placeholder="e.g. 1-3" value={{the_input['total_expenses']}}>
+          <label class="control-label col-sm-2" for="total_expenses">Total expenses:</label>
+	  <div class="col-sm-2">
+	    <select class="form-control" id="total_expenses" name="total_expenses">
+	      <option value="0">No preference</option>
+	      <option value="1">Low</option>
+	      <option value="2">Medium</option>
+	      <option value="3">High</option>
+	    </select>
+	  </div>
         </div>
 
 	<!percent spent on programming: low (1), medium (2), or high(3)>
         <div class="form-group">
-          <label for="percent_program">Percent of budget spent on programming:</label>
-          <input type="text" id="percent_program" name="percent_program" placeholder="e.g. 1-3" value={{the_input['percent_program']}}>
+          <label class="control-label col-sm-2" for="percent_program">Percent of budget spent on programming:</label>
+	  <div class="col-sm-2">
+	    <select class="form-control" id="percent_program" name="percent_program">
+	      <option value="0">No preference</option>
+	      <option value="1">Low</option>
+	      <option value="2">Medium</option>
+	      <option value="3">High</option>
+	    </select>
+	  </div>
         </div>
 
 	<!social media presence: low (1) or high (2)>
         <div class="form-group">
-          <label for="twitter_followers">Twitter followers:</label>
-          <input type="text" id="twitter_followers" name="twitter_followers" placeholder="e.g. 1-2" value={{the_input['twitter_followers']}}>
+          <label class="control-label col-sm-2" for="twitter_followers">Twitter followers:</label>
+	  <div class="col-sm-2">
+	    <select class="form-control" id="twitter_followers" name="twitter_followers">
+	      <option value="0">No preference</option>
+	      <option value="1">Low</option>
+	      <option value="2">High</option>
+	    </select>
+	  </div>
         </div>
 
         <div>
@@ -222,23 +289,10 @@
     </div>
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="static/js/bootstrap.min.js"></script>
-  </div> <!-- /.container-->
+  </div> <!-- /.container--><!-- end of input list -->
 
       
       <br><br>
-
-<!--    <div class="container">
-      <div class="starter-template">
-        <h3>Another Result:</h3>
-        <p class="lead">Now we've taken the input and called a function from your package.<br>The result is {{the_result}}</p>
-      </div>
-
-
-      <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-     <script src="static/js/bootstrap.min.js"></script>
-
-
-     </div>--><!-- /.container -->
 
 
     <!-- Bootstrap core JavaScript

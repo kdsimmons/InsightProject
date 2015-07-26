@@ -21,6 +21,7 @@ week2_run.sh: old shell script to run through diseases collecting data (no longe
 project_week2.py: old python script to get data for a specified disease (no longer useful)
 make_database.py: python script to get data for all diseases using main function (previously called charities.py)
 clean_sql.py: clean SQL database without rescraping (duplicate of code to charities.py used when changes are made to the cleaning process)
+get_distributioins.py: make SQL database with distributions of features so that app runs faster
 
 ipython notebooks:
 10 Minutes to pandas.ipynb: tutorial on pandas module
