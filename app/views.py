@@ -15,11 +15,6 @@ con = mdb.connect(user=sqluser, host="localhost", db="charity_data", password=sq
 
 @app.route('/')
 @app.route('/index')
-def index():
-    return render_template("index.html",
-        title = 'Home', user = { 'nickname': 'Miguel' },
-        )
-
 @app.route('/input')
 def input():
     return render_template("input.html")

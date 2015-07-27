@@ -64,7 +64,7 @@ def convert_prefs_to_ideal(pref_list):
     return ideal_df
 
 # Clean up data after transfering through SQL.
-def clean_data(data_df):
+def clean_data(data_df)
     # Change integers to floats so that NaNs work
     for col in data_df.columns:
         if data_df[col].dtype == 'int':

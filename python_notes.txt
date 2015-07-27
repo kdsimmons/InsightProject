@@ -1,0 +1,13 @@
+NumPy:
+- zeros_like, ones_like, zeros, ones
+- array1.astype(array2.dtype)
+- changes to nd array slices affect original nd array
+- boolean arrays use !, &, | rather than not, and, or
+- np.ix_ does meshgrid
+- .T for transpose
+- np.where(cond, X, Y) does if cond then X else Y
+- np.argmax()
+
+Pandas:
+- ser.values, ser.index, ser.name, ser.index.name
+- pd.isnull(), pd.notnull()
