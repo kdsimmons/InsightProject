@@ -24,6 +24,8 @@ def convert_prefs_to_ideal(pref_list):
             ideal_df[:][col] = np.nan
         elif pref_list[col] == 1:
             ideal_df[:][col] = 1.
+        elif pref_list[col] == 2:
+            ideal_df[:][col] = 0.
         else:
             raise Exception('Improper input for ' + str(col) + ': ' + str(pref_list[col]) + ' (' + str(type(pref_list[col])) + ').')
 

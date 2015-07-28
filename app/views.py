@@ -61,23 +61,8 @@ def output():
                               'total_expenses' : expense_pref,
                               'total_revenue' : 0.,
                               'twitter_followers' : twitter_pref }
-    # Make a copy of preferences to repopulate fields
-    the_input = {'bbb_accred' : bbb_pref, 
-                              'cn_rated' : cn_pref, 
-                              'tax_exempt' : tax_pref,
-                              'cn_overall' : 100., 
-                              'cn_acct_transp' : 100., 
-                              'cn_financial' : 100., 
-                              'percent_program' : program_pref, 
-                              'staff_size' : staff_pref, 
-                              'board_size' : board_pref,
-                              'age' : age_pref, 
-                              'total_contributions' : cont_pref, 
-                              'total_expenses' : expense_pref,
-                              'total_revenue' : 0.,
-                              'twitter_followers' : twitter_pref,
-                              'disease' : clean_disease_name,
-                              'state' : req_state }
+    # Make a copy of preferences to repopulate fields (not used currently)
+    the_input = {'bbb_accred' : bbb_pref, 'cn_rated' : cn_pref, 'tax_exempt' : tax_pref, 'cn_overall' : 100., 'cn_acct_transp' : 100., 'cn_financial' : 100., 'percent_program' : program_pref, 'staff_size' : staff_pref, 'board_size' : board_pref, 'age' : age_pref, 'total_contributions' : cont_pref, 'total_expenses' : expense_pref, 'total_revenue' : 0., 'twitter_followers' : twitter_pref, 'disease' : clean_disease_name, 'state' : req_state }
 
     for pref in pref_list.viewkeys():
         if pref_list[pref] == '':
@@ -137,7 +122,46 @@ def output():
 
     # CLEAN DATAFRAME FOR NICE PRINTING HERE
 
-
     charities = top_charities.to_dict(outtype='records')
-    print the_input
+
+    for charity in charities:
+        # Clean boolean features
+        for key in ['bbb_accred', 'cn_rated', 'tax_exempt']:
+            if charity[key] == 1.:
+                charity[key] = 'Yes'
+            elif charity[key] == 0.:
+                charity[key] = 'No'
+            else:
+                charity[key] = '--'
+        # Clean floating-point features 
+        for key in ['cn_overall', 'cn_financial', 'cn_acct_transp']:
+            if np.isnan(charity[key]):
+                charity[key] = '--'
+            else:
+                charity[key] = '{:.2f}'.format(charity[key])
+        # Clean integer features with commas:
+        for key in ['twitter_followers', 'board_size', 'staff_size']:
+            if np.isnan(charity[key]):
+                charity[key] = '--'
+            else:
+                charity[key] = '{:,.0f}'.format(charity[key])
+        # Clean integer features without commas:
+        for key in ['year_incorporated']:
+            if np.isnan(charity[key]):
+                charity[key] = '--'
+            else:
+                charity[key] = '{:.0f}'.format(charity[key])
+        # Clean percentage features:
+        for key in ['percent_fund', 'percent_program', 'percent_admin']:
+            if np.isnan(charity[key]):
+                charity[key] = '--'
+            else:
+                charity[key] = '{:.2f}%'.format(charity[key])
+        # Clean currency features:
+        for key in ['total_expenses','total_contributions']:
+            if np.isnan(charity[key]):
+                charity[key] = '--'
+            else:
+                charity[key] = '${:,.0f}'.format(charity[key])
+
     return render_template("output.html", charities = charities, the_result = the_result, the_focus = the_focus, the_input = the_input, custom_error = '')

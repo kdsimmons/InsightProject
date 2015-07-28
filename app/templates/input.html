@@ -26,6 +26,43 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <!-- Style definitions copied from Andrew's site. -->
+    <style>
+
+      .container-big {
+      padding: 10px;
+      min-width: 800px;
+      }
+
+      .container-center {
+      padding: 10px;
+      margin: auto;
+      width: 90%;
+      }
+      
+      .container-left {
+      padding: 2px;
+      float:left;
+      width: 50%;
+      }
+
+      .container-right {
+      padding: 2px;
+      float:right;
+      width: 50%;
+      }
+
+      .table {
+      border: 1;
+      padding: 10px;
+      margin: auto;
+      width: 100%;
+      vertical-align: center;
+      }
+
+    </style>
+
   </head>
 
   <body>
@@ -46,6 +83,7 @@
             <li class="active"><a href="#">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
+            <li><a href="https://docs.google.com/presentation/d/1kqTnhoyDH4a3c634y39U80L4dGcf1qF2drwRXEpGtz8/pub?start=false&loop=false&delayms=3000">Slides</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -53,11 +91,12 @@
 
     <br><br>
 
-    <div class="container">
+    <div class="container-center">
+    <div class="container-left">
     <div class="starter-template">
         <!--<h2>Input Page</h2>-->
 	<br><br>
-        <h4>Choose a type of charity to look for:</h4>
+        <h3>Choose a type of charity to look for:</h3>
     </div>
 
     <div class = "container">
@@ -86,7 +125,8 @@
 	  <div class="col-sm-2">
 	    <select class="form-control" id="tax_exempt" name="tax_exempt">
 	      <option value="0">No preference</option>
-	      <option value="1">Yes</option>
+	      <option value="1" selected>Yes</option>
+	      <option value="2">No</option>
 	    </select>
 	  </div>
         </div>
@@ -97,7 +137,8 @@
 	  <div class="col-sm-2">
 	    <select class="form-control" id="bbb_accred" name="bbb_accred">
 	      <option value="0">No preference</option>
-	      <option value="1">Yes</option>
+	      <option value="1" selected>Yes</option>
+	      <option value="2">No</option>
 	    </select>
 	  </div>
         </div>
@@ -108,7 +149,8 @@
 	  <div class="col-sm-2">
 	    <select class="form-control" id="cn_rated" name="cn_rated">
 	      <option value="0">No preference</option>
-	      <option value="1">Yes</option>
+	      <option value="1" selected>Yes</option>
+	      <option value="2">No</option>
 	    </select>
 	  </div>
         </div>
@@ -208,8 +250,8 @@
 
       </form>
     </div>
-
-
+    </div>
+    <br>
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="../static/js/bootstrap.min.js"></script>
 

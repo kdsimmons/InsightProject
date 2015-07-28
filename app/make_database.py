@@ -8,7 +8,7 @@ import requests, urllib2
 import tweepy
 import pymysql as mdb
 import sys
-
+import master_disease_list
 
 
 def scrape_bbb_urls(disease):
@@ -57,8 +57,8 @@ def clean_bbb_info(bbb_soups,disease):
                 charity_data['bbb_accred'] = accred_seal[0].attrs.get('alt')
             else:
                 charity_data['bbb_accred'] = row.select('div.accreditation-mobile')[0].get_text()
-            charity_data['address'] = row.select('div.accreditation-mobile')[0].next_sibling.strip().replace(u'\u2019', u'\'')
-            charity_data['city'] = row.select('div.accreditation-mobile')[0].next_sibling.next_sibling.next_sibling.strip()
+            charity_data['address'] = row.select('div.accreditation-mobile')[0].next_sibling.strip('" ').replace(u'\u2019', u'\'')
+            charity_data['city'] = row.select('div.accreditation-mobile')[0].next_sibling.next_sibling.next_sibling.strip('" ')
             
             charities.append(charity_data)
 
@@ -72,10 +72,12 @@ def clean_bbb_info(bbb_soups,disease):
             purpdiv = soup.select('div#purpose')[0]
             tag = purpdiv.findNext(text=re.compile('Year, State Incorporated'))
             charity['year_incorporated'] = int(re.findall('[1-2][0-9][0-9][0-9]', tag.findNext('p').text)[0])
-            tag = purpdiv.findNext(text=re.compile('Stated Purpose'))
-            charity['purpose'] = tag.findNext('p').text.strip('"').replace(u'\u2019', u'\'')
         except:
             charity['year_incorporated'] = -1
+        try:
+            tag = purpdiv.findNext(text=re.compile('Stated Purpose'))
+            charity['purpose'] = tag.findNext('p').replace(u'\u2019', u'\'').text.strip('" ')
+        except:
             charity['purpose'] = ''
 
         # board and staff size
@@ -90,7 +92,7 @@ def clean_bbb_info(bbb_soups,disease):
         # tax exempt status
         try:
             taxdiv = soup.select('div#taxstatus')[0]
-            charity['tax_status'] = taxdiv.findNext('p').text
+            charity['tax_status'] = taxdiv.findNext('p').text.replace(u'\u2019', u'\'')
         except:
             charity['tax_status'] = 'unknown'
 
@@ -448,6 +450,7 @@ def convert_to_sql(pandadf,disease):
                          VALUES(" + value_str + ")")
 
             except:
+                print pandadf.purpose[idx]
                 print "\nProblem converting " + str(idx) + " to SQL."
                 print sys.exc_info()
                 continue
@@ -464,11 +467,7 @@ def convert_to_sql(pandadf,disease):
 # Define main() function to go through diseases and pull charity info.
 def main():
     # Cycle through diseases
-    disease_list = ["alzheimer's disease", "blindness", "breast cancer", "colon cancer", "colorectal cancer", 
-                    "crohn's disease", "melanoma", "lymphoma",
-                    "dyslexia", "leukemia", "lung cancer", "multiple sclerosis", "diabetes",
-                    "osteoporosis", "parkinson's disease", "prostate cancer", "brain cancer", "cancer", "tumor"]
-    disease_list = ['fibromyalgia', 'colitis', 'lupus', 'throat cancer', 'pancreatic cancer', 'bone cancer', 'uterine cancer', 'ovarian cancer', 'bladder cancer', 'cervical cancer']
+    disease_list = master_disease_list.return_diseases()
 
     for disease in disease_list:
         clean_disease_name = ' '.join(disease.lower().replace('\'s disease','').split())

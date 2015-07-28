@@ -21,11 +21,52 @@
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
 
+    <!-- Script links copied from Andrew's site. -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <!-- Style definitions copied from Andrew's site. -->
+    <style>
+
+      .container-big {
+      padding: 10px;
+      min-width: 800px;
+      }
+
+      .container-center {
+      padding: 10px;
+      margin: auto;
+      width: 90%;
+      }
+      
+      .container-left {
+      padding: 2px;
+      float:left;
+      width: 50%;
+      }
+
+      .container-right {
+      padding: 2px;
+      float:right;
+      width: 50%;
+      }
+
+      .table {
+      border: 1;
+      padding: 10px;
+      margin: auto;
+      width: 100%;
+      vertical-align: center;
+      }
+
+    </style>
+
   </head>
 
   <body>
@@ -46,6 +87,7 @@
             <li class="active"><a href="#">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
+            <li><a href="https://docs.google.com/presentation/d/1kqTnhoyDH4a3c634y39U80L4dGcf1qF2drwRXEpGtz8/pub?start=false&loop=false&delayms=3000">Slides</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div><!-- container -->
@@ -54,7 +96,7 @@
     <br><br><br>
 
     <!-- Container with output for last search -->
-    <div class="container">
+    <div class="container-center">
       <div class="starter-template">
         <h3>Recommended charities with a focus on {{the_focus}}:</h3>
 	<p id="error-message" class="lead">{{custom_error}}</p>
@@ -94,46 +136,48 @@
 
 	  <td>{{charity['address']}}</td>
 	  <td>{{charity['city']}}</td>
-	  <td>{{charity['tax_exempt']}}</td>
+	  <td align="center">{{charity['tax_exempt']}}</td>
 
 	  {% if charity['bbb_link'] %}
-	  <td><a href={{charity['bbb_link']}} id="bbb">{{charity['bbb_accred']}}</a></td>
+	  <td align="center"><a href={{charity['bbb_link']}} id="bbb">{{charity['bbb_accred']}}</a></td>
 	  {% else %}
-	  <td>{{charity['bbb_accred']}}</td>
+	  <td align="center">{{charity['bbb_accred']}}</td>
 	  {% endif %}
 
 	  {% if charity['cn_link'] %}
-	  <td><a href={{charity['cn_link']}} id="charity-navigator">{{charity['cn_overall']}}</a></td>
+	  <td align="center"><a href={{charity['cn_link']}} id="charity-navigator">{{charity['cn_overall']}}</a></td>
 	  {% else %}
-	  <td>{{charity['cn_overall']}}</td>
+	  <td align="center">{{charity['cn_overall']}}</td>
 	  {% endif %}
-	  <td>{{charity['cn_financial']}}</td>
-	  <td>{{charity['cn_acct_transp']}}</td>
+	  <td align="center">{{charity['cn_financial']}}</td>
+	  <td align="center">{{charity['cn_acct_transp']}}</td>
 
-	  <td>{{charity['year_incorporated']}}</td>
-	  <td>{{charity['staff_size']}}</td>
-	  <td>{{charity['board_size']}}</td>
-	  <td>{{charity['total_contributions']}}</td>
-	  <td>{{charity['total_expenses']}}</td>
-	  <td>{{charity['percent_program']}}%</td>
-	  <td>{{charity['percent_admin']}}%</td>
-	  <td>{{charity['percent_fund']}}%</td>
+	  <td align="center">{{charity['year_incorporated']}}</td>
+	  <td align="center">{{charity['staff_size']}}</td>
+	  <td align="center">{{charity['board_size']}}</td>
+	  <td align="center">{{charity['total_contributions']}}</td>
+	  <td align="center">{{charity['total_expenses']}}</td>
+	  <td align="center">{{charity['percent_program']}}</td>
+	  <td align="center">{{charity['percent_admin']}}</td>
+	  <td align="center">{{charity['percent_fund']}}</td>
 
 	  {% if charity['twitter_link'] %}
-	  <td><a href={{charity['twitter_link']}} id="twitter">{{charity['twitter_followers']}}</a></td>
+	  <td align="center"><a href={{charity['twitter_link']}} id="twitter">{{charity['twitter_followers']}}</a></td>
 	  {% else %}
-	  <td>{{charity['twitter_followers']}}</td>
+	  <td align="center">{{charity['twitter_followers']}}</td>
 	  {% endif %}
 	</tr>
 	{% endfor %}
       </table>
+
 <!--Uncomment the following line to print the_result, currently used for debugging.-->
 <!--<p>The result is {{the_result}}.</p>-->
 
      </div><!-- /.container --><!-- end of output table -->
-
+  <br>
+  <div class="container-center">
   <!-- List of input for new search -->
-  <div class="container">
+  <div class="container-left">
     <div class="starter-template">
 	<br><br>
         <h3>Find another charity:</h3>
@@ -165,7 +209,8 @@
 	  <div class="col-sm-2">
 	    <select class="form-control" id="tax_exempt" name="tax_exempt">
 	      <option value="0">No preference</option>
-	      <option value="1">Yes</option>
+	      <option value="1" selected>Yes</option>
+	      <option value="2">No</option>
 	    </select>
 	  </div>
         </div>
@@ -176,7 +221,8 @@
 	  <div class="col-sm-2">
 	    <select class="form-control" id="bbb_accred" name="bbb_accred">
 	      <option value="0">No preference</option>
-	      <option value="1">Yes</option>
+	      <option value="1" selected>Yes</option>
+	      <option value="2">No</option>
 	    </select>
 	  </div>
         </div>
@@ -187,7 +233,8 @@
 	  <div class="col-sm-2">
 	    <select class="form-control" id="cn_rated" name="cn_rated">
 	      <option value="0">No preference</option>
-	      <option value="1">Yes</option>
+	      <option value="1" selected>Yes</option>
+	      <option value="2">No</option>
 	    </select>
 	  </div>
         </div>
@@ -283,17 +330,17 @@
 
         <div>
           <button type="submit" class="btn btn-default btn-lg">Find charities!</button>
+	  <br><br>
         </div>
 
       </form>
     </div>
+
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="static/js/bootstrap.min.js"></script>
   </div> <!-- /.container--><!-- end of input list -->
-
+  </div>
       
-      <br><br>
-
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

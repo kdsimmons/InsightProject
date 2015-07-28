@@ -44,6 +44,7 @@ project_week2.ipynb: clean code from week 2
 project_week3.ipynb: clean code from week 3
 scraping_databases.ipynb: work toward scraping charity websites
 scraping_scratch_work.ipynb: notebook for testing out new web scraping code
+scratch_work.ipynb: space for testing out code
 
 app files:
 app: files to run project app

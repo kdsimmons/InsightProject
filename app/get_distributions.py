@@ -64,6 +64,7 @@ def main():
     db.query("CREATE DATABASE IF NOT EXISTS charity_data;")
     db.query("USE charity_data;")
     db.query("DROP TABLE IF EXISTS distribution;")
+    print distribution.columns
     distribution.to_sql(name = 'distribution', con = db, flavor = 'mysql')
     db.close() 
 
