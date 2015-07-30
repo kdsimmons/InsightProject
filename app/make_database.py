@@ -9,7 +9,7 @@ import tweepy
 import pymysql as mdb
 import sys
 import master_disease_list
-
+import urlparse
 
 def scrape_bbb_urls(disease):
     # import URL into beautiful soup object
@@ -144,6 +144,17 @@ def scrape_social_media(charities):
             except IndexError:
                 twlink = ''
             charity['twitter_link'] = twlink
+
+            donlinks = target_soup.findAll('a')
+            charity['donate_link'] = ''
+            for link in donlinks:
+                if re.findall('Donate|Donation|Contribute', str(link), re.IGNORECASE):
+                    url = link.attrs.get('href')
+                    if url:
+                        res = urlparse.urlparse(url)
+                        if not res.scheme == '': # check whether this is a full link
+                            charity['donate_link'] = url
+                            break
             
     return charities
 
@@ -203,6 +214,7 @@ def get_char_nav_info(dictlist):
             charity['percent_admin'] = -1.
             charity['percent_fund'] = -1.
             charity['percent_program'] = -1.
+            charity['ein'] = ''
             continue
         
         # get Charity Navigator data 
@@ -322,6 +334,13 @@ def get_char_nav_info(dictlist):
         charity['percent_admin'] = float(administrative.strip('%'))
         charity['percent_fund'] = float(fundraising.strip('%'))
 
+        # EIN
+        a = charsoup.findAll('a', text='EIN')
+        if len(a) > 0:
+            ein = re.findall('([0-9]+-*[0-9]*)', a[0].nextSibling)
+            if len(ein) > 0:
+                charity['ein'] = ein[0]
+        
     return dictlist
 
 def clean_features(pandadf):
@@ -376,7 +395,9 @@ def convert_to_sql(pandadf,disease):
                 address VARCHAR(255),\
                 city VARCHAR(255),\
                 state CHAR(2),\
+                ein VARCHAR(20),\
                 link VARCHAR(255),\
+                donate_link VARCHAR(255),\
                 bbb_link VARCHAR(255),\
                 facebook_link VARCHAR(255),\
                 twitter_link VARCHAR(255),\
@@ -414,7 +435,9 @@ def convert_to_sql(pandadf,disease):
                          + str(pandadf.address[idx]) + "\",\"" 
                          + str(pandadf.city[idx]) + "\",\"" 
                          + str(pandadf.state[idx]) + "\",\"" 
+                         + str(pandadf.ein[idx]) + "\",\"" 
                          + str(pandadf.link[idx]) + "\",\"" 
+                         + str(pandadf.donate_link[idx]) + "\",\"" 
                          + str(pandadf.bbb_link[idx]) + "\",\"" 
                          + str(pandadf.facebook_link[idx]) + "\",\"" 
                          + str(pandadf.twitter_link[idx]) + "\",\"" 
@@ -440,8 +463,8 @@ def convert_to_sql(pandadf,disease):
                          + str(pandadf.percent_fund[idx]) + "\",\"" 
                          + str(facebook_likes_placeholder) + "\",\"" 
                          + str(pandadf.twitter_followers[idx]) + "\"")
-                cur.execute("INSERT INTO " + str(table_name) + "(name, disease, address, city, state, link, \
-                         bbb_link, facebook_link, twitter_link, cn_link, bbb_accred, \
+                cur.execute("INSERT INTO " + str(table_name) + "(name, disease, address, city, state, ein, link, \
+                         donate_link, bbb_link, facebook_link, twitter_link, cn_link, bbb_accred, \
                          year_incorporated, age, purpose, board_size, staff_size, tax_status, \
                          tax_exempt, cn_rated, cn_overall, cn_financial, cn_acct_transp, \
                          leader_compensation, total_expenses, \

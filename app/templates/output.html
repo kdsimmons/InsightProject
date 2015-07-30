@@ -65,6 +65,30 @@
       vertical-align: center;
       }
 
+      .left-cell {
+      text-align: left;
+      }
+
+      .center-cell {
+      text-align: center;
+      }
+
+      .right-cell {
+      text-align: right;
+      }
+      
+      /* class for first header row with multi-column info */
+      .super-header {
+      }
+
+      th {
+      text-align: center;
+      }
+      
+      td {
+      text-align: center;
+      }
+
     </style>
 
   </head>
@@ -80,14 +104,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">CharityChooser</a>
+          <a class="navbar-brand" href="./input">CharityChooser</a>
         </div> <!-- navbar-header -->
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li><a href="https://docs.google.com/presentation/d/1kqTnhoyDH4a3c634y39U80L4dGcf1qF2drwRXEpGtz8/pub?start=false&loop=false&delayms=3000">Slides</a></li>
+            <li><a href="https://docs.google.com/presentation/d/1zMyeldkEXbL4pYDvbZ2W9nXYbI4kKLzNJOWwDQFYMOU/pub?start=false&loop=false&delayms=3000">Slides</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div><!-- container -->
@@ -103,14 +127,33 @@
       </div><!-- starter-template -->
 
       <table class="table table-hover">
-	<tr>
+	<thead>
+	<tr class="super-header">
+	  <th></th>
+	  <th></th>
+	  <th></th>
+	  <th></th>
+	  <th></th>
+	  <th></th>
+	  <th></th>
+	  <th colspan="3" class="center-cell">Charity Navigator Scores</th>
+	  <th></th>	
+	  <th></th>
+	  <th></th>
+	  <th></th>
+	  <th></th>
+	  <th colspan="3" class="center-cell">Breakdown of Budget</th>
+	  <th></th>
+	</tr>
+	<tr class="super-header">
 	  <th>Rank</th>
 	  <th>Name</th>
+	  <th></th>
 	  <th>Address</th>
 	  <th>City</th>
 	  <th>Tax-exempt?</th>
 	  <th>BBB Accredited?</th>
-	  <th>Charity Navigator Score</th>
+	  <th>Overall</th>
 	  <th>Financial Health</th>	
 	  <th>Accountability and Transparency</th>	
 	  <th>Year Founded</th>	
@@ -118,12 +161,13 @@
 	  <th>Board Size</th>
 	  <th>Total Contributions</th>
 	  <th>Total Expenses</th>
-	  <th>Program Expenses</th>
-	  <th>Administrative Expenses</th>
-	  <th>Fundraising Expenses</th>
+	  <th>Program</th>
+	  <th>Administrative</th>
+	  <th>Fund-raising</th>
 	  <th>Twitter Followers</th>
 	</tr>
-
+	</thead>
+	<tbody>
 	{% for charity in charities %}
 	<tr>
 	  <td>{{charity['ranking']}}</td>
@@ -134,40 +178,47 @@
 	  <td>{{charity['name']}}</td>
 	  {% endif %}
 
+	  {% if charity['donate_link'] %}
+	  <td><a class="btn btn-primary" id="donate" href={{charity['donate_link']}}>Donate</a></td>
+	  {% else %}
+	  <td></td>
+	  {% endif %}
+	  
 	  <td>{{charity['address']}}</td>
 	  <td>{{charity['city']}}</td>
-	  <td align="center">{{charity['tax_exempt']}}</td>
+	  <td>{{charity['tax_exempt']}}</td>
 
 	  {% if charity['bbb_link'] %}
-	  <td align="center"><a href={{charity['bbb_link']}} id="bbb">{{charity['bbb_accred']}}</a></td>
+	  <td><a href={{charity['bbb_link']}} id="bbb">{{charity['bbb_accred']}}</a></td>
 	  {% else %}
-	  <td align="center">{{charity['bbb_accred']}}</td>
+	  <td>{{charity['bbb_accred']}}</td>
 	  {% endif %}
 
 	  {% if charity['cn_link'] %}
-	  <td align="center"><a href={{charity['cn_link']}} id="charity-navigator">{{charity['cn_overall']}}</a></td>
+	  <td><a href={{charity['cn_link']}} id="charity-navigator">{{charity['cn_overall']}}</a></td>
 	  {% else %}
-	  <td align="center">{{charity['cn_overall']}}</td>
+	  <td>{{charity['cn_overall']}}</td>
 	  {% endif %}
-	  <td align="center">{{charity['cn_financial']}}</td>
-	  <td align="center">{{charity['cn_acct_transp']}}</td>
+	  <td>{{charity['cn_financial']}}</td>
+	  <td>{{charity['cn_acct_transp']}}</td>
 
-	  <td align="center">{{charity['year_incorporated']}}</td>
-	  <td align="center">{{charity['staff_size']}}</td>
-	  <td align="center">{{charity['board_size']}}</td>
-	  <td align="center">{{charity['total_contributions']}}</td>
-	  <td align="center">{{charity['total_expenses']}}</td>
-	  <td align="center">{{charity['percent_program']}}</td>
-	  <td align="center">{{charity['percent_admin']}}</td>
-	  <td align="center">{{charity['percent_fund']}}</td>
+	  <td>{{charity['year_incorporated']}}</td>
+	  <td>{{charity['staff_size']}}</td>
+	  <td>{{charity['board_size']}}</td>
+	  <td>{{charity['total_contributions']}}</td>
+	  <td>{{charity['total_expenses']}}</td>
+	  <td>{{charity['percent_program']}}</td>
+	  <td>{{charity['percent_admin']}}</td>
+	  <td>{{charity['percent_fund']}}</td>
 
 	  {% if charity['twitter_link'] %}
-	  <td align="center"><a href={{charity['twitter_link']}} id="twitter">{{charity['twitter_followers']}}</a></td>
+	  <td><a href={{charity['twitter_link']}} id="twitter">{{charity['twitter_followers']}}</a></td>
 	  {% else %}
-	  <td align="center">{{charity['twitter_followers']}}</td>
+	  <td>{{charity['twitter_followers']}}</td>
 	  {% endif %}
 	</tr>
 	{% endfor %}
+	</tbody>
       </table>
 
 <!--Uncomment the following line to print the_result, currently used for debugging.-->
@@ -187,19 +238,29 @@
 
       <form  action="/output" method="GET" class="form-horizontal">
 
+        <h3>Choose a type of charity to look for (required):</h3>
+
 	<!disease: free response>
         <div class="form-group">
 	  <div class="row">
-          <h4><label class="control-label col-sm-4" for="disease">Disease (required):</label>
-	  <div class="col-sm-2">
-          <input class="form-control" type="text" id="disease" name='disease' value="{{the_focus}}" placeholder="e.g. cancer">
-	  </div></h4>
+            <h4><label class="control-label col-sm-4" for="disease">Disease:</label>
+	      <div class="col-sm-2">
+	 	<input class="form-control" type="text" id="disease" name='disease' placeholder="e.g. cancer" value={{ the_focus }}>
+	      </div>
+	    </h4>
+	  </div>
         </div>
-<br>
-        </div>
+        <div>
+	  <label class="control-label col-sm-4"></label> <! just using this line to get spacing right>
+              <button type="submit" class="btn btn-warning col-sm-3">Find charities!</button>
 
-	<!state: choice of 50>
+        </div>
+          <br>
+	
+	<h3>Select additional preferences (optional):</h3><br>
+
         <h5>
+	<!state: choice of 50>
 	<div class="form-group">
 	  <div class="row">
           <label class="control-label col-sm-4" for="state">State:</label>
@@ -312,7 +373,8 @@
 	    <select class="form-control"  id="age" name="age">
 	      <option value="0">No preference</option>
 	      <option value="1">Young</option>
-	      <option value="2">Old</option>
+	      <option value="2">Medium</option>
+	      <option value="3">Old</option>
 	    </select>
 	  </div>
         </div>
@@ -401,16 +463,17 @@
 	      <select class="form-control" id="twitter_followers" name="twitter_followers">
 		<option value="0">No preference</option>
 		<option value="1">Low</option>
-		<option value="2">High</option>
+		<option value="2">Medium</option>
+		<option value="3">High</option>
 	      </select>
 	    </div>
           </div>
 	</div>
 	</h5>
 
-
         <div>
-          <button type="submit" class="btn btn-default btn-lg">Find charities!</button>
+	  <label class="control-label col-sm-4"></label> <! just using this line to get spacing right>
+              <button type="submit" class="btn btn-warning col-sm-3">Find charities!</button>
 	  <br><br>
         </div>
 

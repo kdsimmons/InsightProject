@@ -76,7 +76,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="./input">CharityChooser</a>
+          <a class="navbar-brand" href="#">CharityChooser</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -96,35 +96,26 @@
     <div class="starter-template">
         <!--<h2>Input Page</h2>-->
 	<br><br>
+        <h3>Choose a type of charity to look for:</h3>
     </div>
 
     <div class = "container">
 
       <form  action="/output" method="GET" class="form-horizontal">
 
-        <h3>Choose a type of charity to look for (required):</h3>
-
 	<!disease: free response>
         <div class="form-group">
 	  <div class="row">
-            <h4><label class="control-label col-sm-4" for="disease">Disease:</label>
-	      <div class="col-sm-2">
-	 	<input class="form-control" type="text" id="disease" name='disease' placeholder="e.g. cancer">
-	      </div>
-	    </h4>
-	  </div>
+          <h4><label class="control-label col-sm-4" for="disease">Disease (required):</label>
+	  <div class="col-sm-2">
+          <input class="form-control" type="text" id="disease" name='disease' placeholder="e.g. cancer">
+	  </div></h4>
         </div>
-        <div>
-	  <label class="control-label col-sm-4"></label> <! just using this line to get spacing right>
-              <button type="submit" class="btn btn-warning col-sm-3">Find charities!</button>
-
+<br>
         </div>
-          <br>
-	
-	<h3>Select additional preferences (optional):</h3><br>
 
-        <h5>
 	<!state: choice of 50>
+        <h5>
 	<div class="form-group">
 	  <div class="row">
           <label class="control-label col-sm-4" for="state">State:</label>
@@ -334,9 +325,7 @@
 	</h5>
 
         <div>
-	  <label class="control-label col-sm-4"></label> <! just using this line to get spacing right>
-              <button type="submit" class="btn btn-warning col-sm-3">Find charities!</button>
-	  <br><br>
+          <button type="submit" class="btn btn-default btn-lg">Find charities!</button>
         </div>
 
       </form>

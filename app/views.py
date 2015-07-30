@@ -1,11 +1,13 @@
-from flask import render_template, request
-from app import app
+from flask import render_template, request, Flask
+#from app import app
 import pymysql as mdb
 import pandas as pd
 import sys, re
 import program_rankings as rank
 import numpy as np
 import copy
+
+app = Flask(__name__)
 
 mysqlauth = pd.DataFrame.from_csv('/home/kristy/Documents/auth_codes/mysql_user.csv')
 sqluser = mysqlauth.username[0]
@@ -16,6 +18,8 @@ con = mdb.connect(user=sqluser, host="localhost", db="charity_data", password=sq
 @app.route('/')
 @app.route('/index')
 @app.route('/input')
+@app.route('/insight')
+@app.route('/charitychooser')
 def input():
     return render_template("input.html")
 
@@ -50,19 +54,17 @@ def output():
     pref_list = {'bbb_accred' : bbb_pref, 
                               'cn_rated' : cn_pref, 
                               'tax_exempt' : tax_pref,
-                              'cn_overall' : 100., 
-                              'cn_acct_transp' : 100., 
-                              'cn_financial' : 100., 
+                              'cn_overall' : '3',
+                              'cn_acct_transp' : '3', 
+                              'cn_financial' : '3', 
                               'percent_program' : program_pref, 
                               'staff_size' : staff_pref, 
                               'board_size' : board_pref,
                               'age' : age_pref, 
                               'total_contributions' : cont_pref, 
                               'total_expenses' : expense_pref,
-                              'total_revenue' : 0.,
+                              'total_revenue' : cont_pref,
                               'twitter_followers' : twitter_pref }
-    # Make a copy of preferences to repopulate fields (not used currently)
-    the_input = {'bbb_accred' : bbb_pref, 'cn_rated' : cn_pref, 'tax_exempt' : tax_pref, 'cn_overall' : 100., 'cn_acct_transp' : 100., 'cn_financial' : 100., 'percent_program' : program_pref, 'staff_size' : staff_pref, 'board_size' : board_pref, 'age' : age_pref, 'total_contributions' : cont_pref, 'total_expenses' : expense_pref, 'total_revenue' : 0., 'twitter_followers' : twitter_pref, 'disease' : clean_disease_name, 'state' : req_state }
 
     for pref in pref_list.viewkeys():
         if pref_list[pref] == '':
@@ -71,6 +73,7 @@ def output():
             pref_list[pref] = float(pref_list[pref])
             
     ideal_char = rank.convert_prefs_to_ideal(pref_list)
+    
     """
     ideal_char = pd.DataFrame({'bbb_accred' : True, 'cn_rated' : True, 'tax_exempt' : True, 'cn_overall' : 100., 'cn_acct_transp' : 100., 'cn_financial' : 100, 'percent_admin' : 10., 'percent_fund' : 0., 'percent_program' : 90., 'staff_size' : 100, 'board_size' : 10, 'age' : 10, 'total_contributions' : 100000, 'total_expenses' : 100000, 'total_revenue' : 0, 'twitter_followers' : 10000 }, index={1000})
     """
@@ -88,7 +91,7 @@ def output():
             custom_error = "Sorry, that disease is not in our database."
             charities = []
             the_result = 0
-            return render_template("output.html", charities = charities, the_result = the_result, the_focus = the_focus, the_input = the_input, custom_error = custom_error)
+            return render_template("output.html", charities = charities, the_result = the_result, the_focus = the_focus, the_input = pref_list, custom_error = custom_error)
     # Expected case, where user has entered preferences.
     else:
         try:
@@ -120,7 +123,7 @@ def output():
     """
 
 
-    # CLEAN DATAFRAME FOR NICE PRINTING HERE
+    # CLEAN DATAFRAME FOR NICE PRINTING
 
     charities = top_charities.to_dict(outtype='records')
 
@@ -156,7 +159,7 @@ def output():
             if np.isnan(charity[key]):
                 charity[key] = '--'
             else:
-                charity[key] = '{:.2f}%'.format(charity[key])
+                charity[key] = '{:.1f}%'.format(charity[key])
         # Clean currency features:
         for key in ['total_expenses','total_contributions']:
             if np.isnan(charity[key]):
@@ -164,4 +167,7 @@ def output():
             else:
                 charity[key] = '${:,.0f}'.format(charity[key])
 
-    return render_template("output.html", charities = charities, the_result = the_result, the_focus = the_focus, the_input = the_input, custom_error = '')
+    return render_template("output.html", charities = charities, the_result = the_result, the_focus = the_focus, the_input = pref_list, custom_error = '')
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0',port=5000,debug=False)

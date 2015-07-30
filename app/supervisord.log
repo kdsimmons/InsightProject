@@ -1,0 +1,210 @@
+2015-07-29 11:55:32,656 CRIT Set uid to user 0
+2015-07-29 11:55:32,658 INFO daemonizing the supervisord process
+2015-07-29 11:55:32,659 INFO supervisord started with pid 5575
+2015-07-29 11:55:33,661 INFO spawned: 'myserver' with pid 5576
+2015-07-29 11:55:33,746 DEBG 'myserver' stderr output:
+[2015-07-29 11:55:33 +0000] [5576] [INFO] Starting gunicorn 19.3.0
+[2015-07-29 11:55:33 +0000] [5576] [INFO] Listening at: http://0.0.0.0:80 (5576)
+[2015-07-29 11:55:33 +0000] [5576] [INFO] Using worker: sync
+
+2015-07-29 11:55:33,746 DEBG 'myserver' stderr output:
+[2015-07-29 11:55:33 +0000] [5581] [INFO] Booting worker with pid: 5581
+
+2015-07-29 11:55:33,756 DEBG 'myserver' stderr output:
+[2015-07-29 11:55:33 +0000] [5582] [INFO] Booting worker with pid: 5582
+
+2015-07-29 11:55:33,796 DEBG 'myserver' stderr output:
+[2015-07-29 11:55:33 +0000] [5583] [INFO] Booting worker with pid: 5583
+
+2015-07-29 11:55:33,828 DEBG 'myserver' stderr output:
+[2015-07-29 11:55:33 +0000] [5586] [INFO] Booting worker with pid: 5586
+
+2015-07-29 11:55:34,829 INFO success: myserver entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2015-07-29 11:55:57,823 CRIT Set uid to user 0
+2015-07-29 11:55:57,825 INFO daemonizing the supervisord process
+2015-07-29 11:55:57,825 INFO supervisord started with pid 5613
+2015-07-29 11:55:58,828 INFO spawned: 'myserver' with pid 5614
+2015-07-29 11:55:58,912 DEBG 'myserver' stderr output:
+[2015-07-29 11:55:58 +0000] [5614] [INFO] Starting gunicorn 19.3.0
+[2015-07-29 11:55:58 +0000] [5614] [ERROR] Connection in use: ('0.0.0.0', 80)
+[2015-07-29 11:55:58 +0000] [5614] [ERROR] Retrying in 1 second.
+
+2015-07-29 11:55:59,913 INFO success: myserver entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2015-07-29 11:55:59,914 DEBG 'myserver' stderr output:
+[2015-07-29 11:55:59 +0000] [5614] [ERROR] Connection in use: ('0.0.0.0', 80)
+
+2015-07-29 11:55:59,914 DEBG 'myserver' stderr output:
+[2015-07-29 11:55:59 +0000] [5614] [ERROR] Retrying in 1 second.
+
+2015-07-29 11:56:00,916 DEBG 'myserver' stderr output:
+[2015-07-29 11:56:00 +0000] [5614] [ERROR] Connection in use: ('0.0.0.0', 80)
+
+2015-07-29 11:56:00,916 DEBG 'myserver' stderr output:
+[2015-07-29 11:56:00 +0000] [5614] [ERROR] Retrying in 1 second.
+
+2015-07-29 11:56:01,917 DEBG 'myserver' stderr output:
+[2015-07-29 11:56:01 +0000] [5614] [ERROR] Connection in use: ('0.0.0.0', 80)
+
+2015-07-29 11:56:01,918 DEBG 'myserver' stderr output:
+[2015-07-29 11:56:01 +0000] [5614] [ERROR] Retrying in 1 second.
+
+2015-07-29 11:56:02,919 DEBG 'myserver' stderr output:
+[2015-07-29 11:56:02 +0000] [5614] [ERROR] Connection in use: ('0.0.0.0', 80)
+
+2015-07-29 11:56:02,919 DEBG 'myserver' stderr output:
+[2015-07-29 11:56:02 +0000] [5614] [ERROR] Retrying in 1 second.
+
+2015-07-29 11:56:03,921 DEBG 'myserver' stderr output:
+[2015-07-29 11:56:03 +0000] [5614] [ERROR] Can't connect to ('0.0.0.0', 80)
+
+2015-07-29 11:56:03,927 DEBG fd 6 closed, stopped monitoring <POutputDispatcher at 140515220610800 for <Subprocess at 140515220610368 with name myserver in state RUNNING> (stdout)>
+2015-07-29 11:56:03,927 DEBG fd 8 closed, stopped monitoring <POutputDispatcher at 140515220610872 for <Subprocess at 140515220610368 with name myserver in state RUNNING> (stderr)>
+2015-07-29 11:56:03,927 INFO exited: myserver (exit status 1; not expected)
+2015-07-29 11:56:03,927 DEBG received SIGCLD indicating a child quit
+2015-07-29 11:56:04,929 INFO spawned: 'myserver' with pid 5627
+2015-07-29 11:56:05,015 DEBG 'myserver' stderr output:
+[2015-07-29 11:56:05 +0000] [5627] [INFO] Starting gunicorn 19.3.0
+[2015-07-29 11:56:05 +0000] [5627] [ERROR] Connection in use: ('0.0.0.0', 80)
+[2015-07-29 11:56:05 +0000] [5627] [ERROR] Retrying in 1 second.
+
+2015-07-29 11:56:06,016 INFO success: myserver entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2015-07-29 11:56:06,016 DEBG 'myserver' stderr output:
+[2015-07-29 11:56:06 +0000] [5627] [ERROR] Connection in use: ('0.0.0.0', 80)
+
+2015-07-29 11:56:06,016 DEBG 'myserver' stderr output:
+[2015-07-29 11:56:06 +0000] [5627] [ERROR] Retrying in 1 second.
+
+2015-07-29 11:56:07,018 DEBG 'myserver' stderr output:
+[2015-07-29 11:56:07 +0000] [5627] [ERROR] Connection in use: ('0.0.0.0', 80)
+
+2015-07-29 11:56:07,018 DEBG 'myserver' stderr output:
+[2015-07-29 11:56:07 +0000] [5627] [ERROR] Retrying in 1 second.
+
+2015-07-29 11:56:08,020 DEBG 'myserver' stderr output:
+[2015-07-29 11:56:08 +0000] [5627] [ERROR] Connection in use: ('0.0.0.0', 80)
+
+2015-07-29 11:56:08,020 DEBG 'myserver' stderr output:
+[2015-07-29 11:56:08 +0000] [5627] [ERROR] Retrying in 1 second.
+
+2015-07-29 11:56:09,021 DEBG 'myserver' stderr output:
+[2015-07-29 11:56:09 +0000] [5627] [ERROR] Connection in use: ('0.0.0.0', 80)
+[2015-07-29 11:56:09 +0000] [5627] [ERROR] Retrying in 1 second.
+
+2015-07-29 11:56:10,027 DEBG 'myserver' stderr output:
+[2015-07-29 11:56:10 +0000] [5627] [ERROR] Can't connect to ('0.0.0.0', 80)
+
+2015-07-29 11:56:10,029 DEBG fd 6 closed, stopped monitoring <POutputDispatcher at 140515220713624 for <Subprocess at 140515220610368 with name myserver in state RUNNING> (stdout)>
+2015-07-29 11:56:10,029 DEBG fd 8 closed, stopped monitoring <POutputDispatcher at 140515220734248 for <Subprocess at 140515220610368 with name myserver in state RUNNING> (stderr)>
+2015-07-29 11:56:10,029 INFO exited: myserver (exit status 1; not expected)
+2015-07-29 11:56:10,029 DEBG received SIGCLD indicating a child quit
+2015-07-29 11:56:11,032 INFO spawned: 'myserver' with pid 5634
+2015-07-29 11:56:11,114 DEBG 'myserver' stderr output:
+[2015-07-29 11:56:11 +0000] [5634] [INFO] Starting gunicorn 19.3.0
+[2015-07-29 11:56:11 +0000] [5634] [ERROR] Connection in use: ('0.0.0.0', 80)
+[2015-07-29 11:56:11 +0000] [5634] [ERROR] Retrying in 1 second.
+
+2015-07-29 11:56:12,115 INFO success: myserver entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2015-07-29 11:56:12,115 DEBG 'myserver' stderr output:
+[2015-07-29 11:56:12 +0000] [5634] [ERROR] Connection in use: ('0.0.0.0', 80)
+
+2015-07-29 11:56:12,115 DEBG 'myserver' stderr output:
+[2015-07-29 11:56:12 +0000] [5634] [ERROR] Retrying in 1 second.
+
+2015-07-29 11:56:13,117 DEBG 'myserver' stderr output:
+[2015-07-29 11:56:13 +0000] [5634] [ERROR] Connection in use: ('0.0.0.0', 80)
+
+2015-07-29 11:56:13,117 DEBG 'myserver' stderr output:
+[2015-07-29 11:56:13 +0000] [5634] [ERROR] Retrying in 1 second.
+
+2015-07-29 11:56:14,119 DEBG 'myserver' stderr output:
+[2015-07-29 11:56:14 +0000] [5634] [ERROR] Connection in use: ('0.0.0.0', 80)
+
+2015-07-29 11:56:14,119 DEBG 'myserver' stderr output:
+[2015-07-29 11:56:14 +0000] [5634] [ERROR] Retrying in 1 second.
+
+2015-07-29 11:56:15,121 DEBG 'myserver' stderr output:
+[2015-07-29 11:56:15 +0000] [5634] [ERROR] Connection in use: ('0.0.0.0', 80)
+
+2015-07-29 11:56:15,122 DEBG 'myserver' stderr output:
+[2015-07-29 11:56:15 +0000] [5634] [ERROR] Retrying in 1 second.
+
+2015-07-29 11:56:16,122 DEBG 'myserver' stderr output:
+[2015-07-29 11:56:16 +0000] [5634] [ERROR] Can't connect to ('0.0.0.0', 80)
+
+2015-07-29 11:56:16,129 DEBG fd 6 closed, stopped monitoring <POutputDispatcher at 140515220610728 for <Subprocess at 140515220610368 with name myserver in state RUNNING> (stdout)>
+2015-07-29 11:56:16,129 DEBG fd 8 closed, stopped monitoring <POutputDispatcher at 140515220734248 for <Subprocess at 140515220610368 with name myserver in state RUNNING> (stderr)>
+2015-07-29 11:56:16,129 INFO exited: myserver (exit status 1; not expected)
+2015-07-29 11:56:16,129 DEBG received SIGCLD indicating a child quit
+2015-07-29 11:56:17,131 INFO spawned: 'myserver' with pid 5641
+2015-07-29 11:56:17,214 DEBG 'myserver' stderr output:
+[2015-07-29 11:56:17 +0000] [5641] [INFO] Starting gunicorn 19.3.0
+[2015-07-29 11:56:17 +0000] [5641] [ERROR] Connection in use: ('0.0.0.0', 80)
+[2015-07-29 11:56:17 +0000] [5641] [ERROR] Retrying in 1 second.
+
+2015-07-29 11:56:18,215 INFO success: myserver entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2015-07-29 11:56:18,216 DEBG 'myserver' stderr output:
+[2015-07-29 11:56:18 +0000] [5641] [ERROR] Connection in use: ('0.0.0.0', 80)
+[2015-07-29 11:56:18 +0000] [5641] [ERROR] Retrying in 1 second.
+
+2015-07-29 11:56:19,218 DEBG 'myserver' stderr output:
+[2015-07-29 11:56:19 +0000] [5641] [ERROR] Connection in use: ('0.0.0.0', 80)
+[2015-07-29 11:56:19 +0000] [5641] [ERROR] Retrying in 1 second.
+
+2015-07-29 11:56:20,220 DEBG 'myserver' stderr output:
+[2015-07-29 11:56:20 +0000] [5641] [ERROR] Connection in use: ('0.0.0.0', 80)
+
+2015-07-29 11:56:20,220 DEBG 'myserver' stderr output:
+[2015-07-29 11:56:20 +0000] [5641] [ERROR] Retrying in 1 second.
+
+2015-07-29 11:56:21,221 DEBG 'myserver' stderr output:
+[2015-07-29 11:56:21 +0000] [5641] [ERROR] Connection in use: ('0.0.0.0', 80)
+
+2015-07-29 11:56:21,221 DEBG 'myserver' stderr output:
+[2015-07-29 11:56:21 +0000] [5641] [ERROR] Retrying in 1 second.
+
+2015-07-29 11:56:22,222 DEBG 'myserver' stderr output:
+[2015-07-29 11:56:22 +0000] [5641] [ERROR] Can't connect to ('0.0.0.0', 80)
+
+2015-07-29 11:56:22,229 DEBG fd 6 closed, stopped monitoring <POutputDispatcher at 140515220610944 for <Subprocess at 140515220610368 with name myserver in state RUNNING> (stdout)>
+2015-07-29 11:56:22,229 DEBG fd 8 closed, stopped monitoring <POutputDispatcher at 140515220734248 for <Subprocess at 140515220610368 with name myserver in state RUNNING> (stderr)>
+2015-07-29 11:56:22,229 INFO exited: myserver (exit status 1; not expected)
+2015-07-29 11:56:22,229 DEBG received SIGCLD indicating a child quit
+2015-07-29 11:56:23,231 INFO spawned: 'myserver' with pid 5648
+2015-07-29 11:56:23,314 DEBG 'myserver' stderr output:
+[2015-07-29 11:56:23 +0000] [5648] [INFO] Starting gunicorn 19.3.0
+[2015-07-29 11:56:23 +0000] [5648] [ERROR] Connection in use: ('0.0.0.0', 80)
+[2015-07-29 11:56:23 +0000] [5648] [ERROR] Retrying in 1 second.
+
+2015-07-29 11:56:24,315 INFO success: myserver entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2015-07-29 11:56:24,316 DEBG 'myserver' stderr output:
+[2015-07-29 11:56:24 +0000] [5648] [ERROR] Connection in use: ('0.0.0.0', 80)
+[2015-07-29 11:56:24 +0000] [5648] [ERROR] Retrying in 1 second.
+
+2015-07-29 11:56:25,318 DEBG 'myserver' stderr output:
+[2015-07-29 11:56:25 +0000] [5648] [ERROR] Connection in use: ('0.0.0.0', 80)
+
+2015-07-29 11:56:25,319 DEBG 'myserver' stderr output:
+[2015-07-29 11:56:25 +0000] [5648] [ERROR] Retrying in 1 second.
+
+2015-07-29 11:57:50,936 CRIT Set uid to user 0
+2015-07-29 11:57:50,938 INFO daemonizing the supervisord process
+2015-07-29 11:57:50,939 INFO supervisord started with pid 5702
+2015-07-29 11:57:51,941 INFO spawned: 'myserver' with pid 5703
+2015-07-29 11:57:52,025 DEBG 'myserver' stderr output:
+[2015-07-29 11:57:52 +0000] [5703] [INFO] Starting gunicorn 19.3.0
+[2015-07-29 11:57:52 +0000] [5703] [INFO] Listening at: http://0.0.0.0:80 (5703)
+[2015-07-29 11:57:52 +0000] [5703] [INFO] Using worker: sync
+
+2015-07-29 11:57:52,026 DEBG 'myserver' stderr output:
+[2015-07-29 11:57:52 +0000] [5708] [INFO] Booting worker with pid: 5708
+
+2015-07-29 11:57:52,092 DEBG 'myserver' stderr output:
+[2015-07-29 11:57:52 +0000] [5711] [INFO] Booting worker with pid: 5711
+
+2015-07-29 11:57:52,132 DEBG 'myserver' stderr output:
+[2015-07-29 11:57:52 +0000] [5712] [INFO] Booting worker with pid: 5712
+
+2015-07-29 11:57:52,220 DEBG 'myserver' stderr output:
+[2015-07-29 11:57:52 +0000] [5715] [INFO] Booting worker with pid: 5715
+
+2015-07-29 11:57:53,221 INFO success: myserver entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)

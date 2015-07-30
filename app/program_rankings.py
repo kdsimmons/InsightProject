@@ -31,33 +31,17 @@ def convert_prefs_to_ideal(pref_list):
 
 
     # Numerical values are defined based on the overall distribution.
-    # Put in ideal values for variables with 2 possible values
-    for col in ['age','twitter_followers']:
+    for col in ['staff_size','board_size','total_contributions','total_expenses','percent_program','twitter_followers','age','cn_overall','cn_financial','cn_acct_transp','total_revenue']:
         if pref_list[col] == 0:
             ideal_df[:][col] = np.nan
         elif  pref_list[col] == 1:
-            ideal_df[:][col] = distribution.loc['p25',col]
-        elif pref_list[col] == 2:
-            ideal_df[:][col] = distribution.loc['p75',col]
-        else:
-            raise Exception('Improper input for ' + str(col) + ': ' + str(pref_list[col]) + ' (' + str(type(pref_list[col])) + ').')
-
-    # Put in ideal values for variables with 3 possible values
-    for col in ['staff_size','board_size','total_contributions','total_expenses','percent_program']:
-        if pref_list[col] == 0:
-            ideal_df[:][col] = np.nan
-        elif  pref_list[col] == 1:
-            ideal_df[:][col] = distribution.loc['p17',col]
+            ideal_df[:][col] = distribution.loc['p0',col]
         elif pref_list[col] == 2:
             ideal_df[:][col] = distribution.loc['p50',col]
         elif pref_list[col] == 3:
-            ideal_df[:][col] = distribution.loc['p83',col]
+            ideal_df[:][col] = distribution.loc['p100',col]
         else:
             raise Exception('Improper input for ' + str(col) + ': ' + str(pref_list[col]) + ' (' + str(type(pref_list[col])) + ').')
-
-    # At least for now, some values are hardcoded in calling function
-    for col in ['cn_overall','cn_financial','cn_acct_transp','total_revenue']:
-        ideal_df[:][col] = pref_list[col]
 
     # At least for now, some values are hardcoded here
     for col in ['percent_admin','percent_fund']:
@@ -150,6 +134,7 @@ def rank_programs(fulldf = pd.DataFrame(np.empty([0,0])), ideal_org = pd.DataFra
     fulldf['gower'] = dists   
     
     # Find best charities based on distance metric.
+    fulldf.gower.fillna(value=-1, inplace=True)
     fulldf.sort(columns='gower', ascending=False, inplace=True)
     fulldf['ranking'] = range(1,len(fulldf)+1)
     top_charities = fulldf[:max_output]

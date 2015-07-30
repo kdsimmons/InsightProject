@@ -20,8 +20,9 @@ data analysis files:
 week2_run.sh: old shell script to run through diseases collecting data (no longer useful)
 project_week2.py: old python script to get data for a specified disease (no longer useful)
 make_database.py: python script to get data for all diseases using main function (previously called charities.py)
-clean_sql.py: clean SQL database without rescraping (duplicate of code to charities.py used when changes are made to the cleaning process)
-get_distributioins.py: make SQL database with distributions of features so that app runs faster
+clean_sql.py: clean SQL database without rescraping (duplicate of code to make_database.py used when changes are made to the cleaning process)
+get_distributions.py: make SQL database with distributions of features so that app runs faster
+master_disease_list.py: load all diseases searched
 
 ipython notebooks:
 10 Minutes to pandas.ipynb: tutorial on pandas module
@@ -48,7 +49,7 @@ scratch_work.ipynb: space for testing out code
 
 app files:
 app: files to run project app
-run.py: main file to execute project app
+run.py: main file to execute project app (no longer used)
 view.py: outer code to process data
 program_rankings: functions to rank charities
 input.html: template for input screen
