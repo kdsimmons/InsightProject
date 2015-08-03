@@ -208,3 +208,25 @@
 [2015-07-29 11:57:52 +0000] [5715] [INFO] Booting worker with pid: 5715
 
 2015-07-29 11:57:53,221 INFO success: myserver entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2015-08-02 21:23:32,690 CRIT Set uid to user 0
+2015-08-02 21:23:32,692 INFO daemonizing the supervisord process
+2015-08-02 21:23:32,693 INFO supervisord started with pid 16219
+2015-08-02 21:23:33,695 INFO spawned: 'myserver' with pid 16220
+2015-08-02 21:23:33,779 DEBG 'myserver' stderr output:
+[2015-08-02 21:23:33 +0000] [16220] [INFO] Starting gunicorn 19.3.0
+[2015-08-02 21:23:33 +0000] [16220] [INFO] Listening at: http://0.0.0.0:80 (16220)
+[2015-08-02 21:23:33 +0000] [16220] [INFO] Using worker: sync
+
+2015-08-02 21:23:33,780 DEBG 'myserver' stderr output:
+[2015-08-02 21:23:33 +0000] [16225] [INFO] Booting worker with pid: 16225
+
+2015-08-02 21:23:33,788 DEBG 'myserver' stderr output:
+[2015-08-02 21:23:33 +0000] [16226] [INFO] Booting worker with pid: 16226
+
+2015-08-02 21:23:33,884 DEBG 'myserver' stderr output:
+[2015-08-02 21:23:33 +0000] [16231] [INFO] Booting worker with pid: 16231
+
+2015-08-02 21:23:33,984 DEBG 'myserver' stderr output:
+[2015-08-02 21:23:33 +0000] [16234] [INFO] Booting worker with pid: 16234
+
+2015-08-02 21:23:34,985 INFO success: myserver entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)

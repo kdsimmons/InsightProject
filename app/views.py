@@ -15,6 +15,10 @@ sqlpass = mysqlauth.password[0]
 
 con = mdb.connect(user=sqluser, host="localhost", db="charity_data", password=sqlpass, charset='utf8')
 
+@app.route('/contact')
+def contact():
+    return render_template("contact.html")
+
 @app.route('/')
 @app.route('/index')
 @app.route('/input')
@@ -30,20 +34,36 @@ def output():
     clean_disease_name = '_'.join(disease.lower().replace('\'s disease','').replace('\'s','').split())
     the_focus = disease.lower()
 
+    req_list = []
     req_state = request.args.get('state')
-    req_string = 'state = "' + str(req_state) + '"' # string of preferences to plug into SQL query
-
+    if req_state != '':
+        req_list.append('state = "' + str(req_state) + '"') # string of preferences to plug into SQL query
+    
     # pull input fields and store preferred features
     tax_pref = request.args.get('tax_exempt')
     bbb_pref = request.args.get('bbb_accred')
     cn_pref = request.args.get('cn_rated')
     age_pref = request.args.get('age')
+    if age_pref != '0':
+        req_list.append('age > -1')
     staff_pref = request.args.get('staff_size')
+    if staff_pref != '0':
+        req_list.append('staff_size > -1')
     board_pref = request.args.get('board_size')
+    if board_pref != '0':
+        req_list.append('board_size > -1')
     cont_pref = request.args.get('total_contributions')
+    if cont_pref != '0':
+        req_list.append('total_contributions > -1')
     expense_pref = request.args.get('total_expenses')
+    if expense_pref != '0':
+        req_list.append('total_expenses > -1')
     program_pref = request.args.get('percent_program')
+    if program_pref != '0':
+        req_list.append('percent_program > -1')
     twitter_pref = request.args.get('twitter_followers')
+    if twitter_pref != '0':
+        req_list.append('twitter_followers > -1')
     
     # Choose features
     feature_names = ['bbb_accred', 'tax_exempt', 'cn_rated', 'cn_overall', 'cn_acct_transp', 'cn_financial', 'percent_admin', 
@@ -81,8 +101,10 @@ def output():
     ideal_char = ideal_char[feature_names]
 
     # read SQL table into pandas data frame and convert to list of dictionaries
+    req_string = ' AND '.join(req_list)
+    
     # Base case, where user has not specified preferences.
-    if req_state == '':
+    if req_string == '':
         try:
             with con:
                 panda_char = pd.read_sql("SELECT * FROM " + str(clean_disease_name), con)
@@ -102,12 +124,13 @@ def output():
             custom_error = "Sorry, that disease is not in our database."
             charities = []
             the_result = 0
-            return render_template("output.html", charities = charities, the_result = the_result, the_focus = the_focus, the_input = the_input, custom_error = custom_error)
+            return render_template("output.html", charities = charities, the_result = the_result, the_focus = the_focus, the_input = pref_list, custom_error = custom_error)
+
     if len(panda_char) == 0:
         custom_error = "Sorry, no organizations meet your criteria. Try removing some of your filters."
         charities = []
         the_result = 0
-        return render_template("output.html", charities = charities, the_result = the_result, the_focus = the_focus, the_input = the_input, custom_error = custom_error)
+        return render_template("output.html", charities = charities, the_result = the_result, the_focus = the_focus, the_input = pref_list, custom_error = custom_error)
     else:
         top_charities = rank.rank_programs(panda_char, ideal_char)
         
@@ -170,4 +193,4 @@ def output():
     return render_template("output.html", charities = charities, the_result = the_result, the_focus = the_focus, the_input = pref_list, custom_error = '')
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0',port=5000,debug=False)
+    app.run(host='0.0.0.0',port=5000,debug=True)

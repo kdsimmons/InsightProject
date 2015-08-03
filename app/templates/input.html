@@ -13,6 +13,9 @@
 
     <!-- Bootstrap core CSS -->
     <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <!script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="../static/js/jquery-1.11.0.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
 
     <!-- Custom styles for this template -->
     <link href="starter-template.css" rel="stylesheet">
@@ -27,9 +30,25 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <!-- Style definitions copied from Andrew's site. -->
+    <!-- Style definitions copied from Andrew's site and edited. -->
     <style>
+      .hack {display: none}
+      [href="#view01"] {display: block}
 
+      #view00:target ~ * col,
+      #view01:target ~ * col {visibility: visible}
+
+      #view00:target ~ * .extra-col {visibility: collapse}
+
+      /* class for hidden columns */
+      .extra-col {
+      visibility: collapse;
+      }
+      
+      .wide-col {
+      min-width: 15em;
+      }
+      
       .container-big {
       padding: 10px;
       min-width: 800px;
@@ -59,6 +78,45 @@
       margin: auto;
       width: 100%;
       vertical-align: center;
+      border-collapse: collapse:
+      }
+
+      .left-cell {
+      text-align: left;
+      }
+
+      .center-cell {
+      text-align: center;
+      }
+
+      .right-cell {
+      text-align: right;
+      }
+
+      /* class for first header row with multi-column info */
+      .super-header {
+      }
+
+      .control-label {
+      font-size: 16px;
+      }
+
+      .form-control {
+      font-size: 16px;
+      }
+      
+      .btn {
+      font-size: 18px;
+      }
+
+      th {
+      font-size: 18px;
+      text-align: center;
+      }
+      
+      td {
+      text-align: center;
+      font-size: 18px;
       }
 
     </style>
@@ -82,7 +140,7 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
             <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="./contact">Contact</a></li>
             <li><a href="https://docs.google.com/presentation/d/1zMyeldkEXbL4pYDvbZ2W9nXYbI4kKLzNJOWwDQFYMOU/pub?start=false&loop=false&delayms=3000">Slides</a></li>
           </ul>
         </div><!--/.nav-collapse -->
@@ -92,38 +150,38 @@
     <br><br>
 
     <div class="container-center">
-    <div class="container-left">
-    <div class="starter-template">
-        <!--<h2>Input Page</h2>-->
-	<br><br>
-    </div>
+      <div class="container-left">
+	<div class="starter-template">
+	  
+	  <br><br>
+	</div>
+	
+	<div class = "container">
 
-    <div class = "container">
+	  <form  action="/output" method="GET" class="form-horizontal">
 
-      <form  action="/output" method="GET" class="form-horizontal">
+            <h4>Choose a type of charity to look for (required):</h4>
 
-        <h3>Choose a type of charity to look for (required):</h3>
-
-	<!disease: free response>
-        <div class="form-group">
-	  <div class="row">
-            <h4><label class="control-label col-sm-4" for="disease">Disease:</label>
-	      <div class="col-sm-2">
-	 	<input class="form-control" type="text" id="disease" name='disease' placeholder="e.g. cancer">
+	    <!disease: free response>
+            <div class="form-group">
+	      <div class="row">
+		<h4><label class="control-label col-sm-4" for="disease">Disease:</label>
+		  <div class="col-sm-2">
+	 	    <input class="form-control" type="text" id="disease" name='disease' placeholder="e.g. cancer">
+		  </div>
+		</h4>
 	      </div>
-	    </h4>
-	  </div>
-        </div>
-        <div>
-	  <label class="control-label col-sm-4"></label> <! just using this line to get spacing right>
+            </div>
+            <div>
+	      <label class="control-label col-sm-4"></label> <! just using this line to get spacing right>
               <button type="submit" class="btn btn-warning col-sm-3">Find charities!</button>
 
-        </div>
-          <br>
+            </div>
+            <br><br>
 	
-	<h3>Select additional preferences (optional):</h3><br>
+	    <h4>Select additional preferences (optional):</h4><br>
 
-        <h5>
+            <h5>
 	<!state: choice of 50>
 	<div class="form-group">
 	  <div class="row">
@@ -187,48 +245,6 @@
 	  </div>
         </div>
 
-	<!tax: yes (1) or no (0)>
-        <div class="form-group">
-	  <div class="row">
-          <label class="control-label col-sm-4" for="tax_exempt">Tax-exempt:</label>
-	  <div class="col-sm-2">
-	    <select class="form-control" class="form-control" id="tax_exempt" name="tax_exempt">
-	      <option value="0">No preference</option>
-	      <option value="1" selected>Yes</option>
-	      <option value="2">No</option>
-	    </select>
-	  </div>
-        </div>
-        </div>
-
-	<!BBB: yes (1) or no (0)>
-        <div class="form-group">
-	  <div class="row">
-          <label class="control-label col-sm-4" for="bbb_accred">BBB accredited:</label>
-	  <div class="col-sm-2">
-	    <select class="form-control"  id="bbb_accred" name="bbb_accred">
-	      <option value="0">No preference</option>
-	      <option value="1" selected>Yes</option>
-	      <option value="2">No</option>
-	    </select>
-	  </div>
-        </div>
-        </div>
-
-	<!CN: yes (1) or no (0)>
-        <div class="form-group">
-	  <div class="row">
-          <label class="control-label col-sm-4" for="cn_rated">Charity Navigator rating:</label>
-	  <div class="col-sm-2">
-	    <select class="form-control"  id="cn_rated" name="cn_rated">
-	      <option value="0">No preference</option>
-	      <option value="1" selected>Yes</option>
-	      <option value="2">No</option>
-	    </select>
-	  </div>
-        </div>
-        </div>
-
 	<!age: young (1) or old (2)>
         <div class="form-group">
 	  <div class="row">
@@ -237,7 +253,8 @@
 	    <select class="form-control"  id="age" name="age">
 	      <option value="0">No preference</option>
 	      <option value="1">Young</option>
-	      <option value="2">Old</option>
+	      <option value="2">Mid-age</option>
+	      <option value="3">Old</option>
 	    </select>
 	  </div>
         </div>
@@ -326,12 +343,55 @@
 	      <select class="form-control" id="twitter_followers" name="twitter_followers">
 		<option value="0">No preference</option>
 		<option value="1">Low</option>
-		<option value="2">High</option>
+		<option value="2">Medium</option>
+		<option value="3">High</option>
 	      </select>
 	    </div>
           </div>
 	</div>
 	</h5>
+
+	<!tax: yes (1) or no (0)>
+        <div class="form-group">
+	  <div class="row">
+          <label class="control-label col-sm-4" for="tax_exempt">Tax-exempt:</label>
+	  <div class="col-sm-2">
+	    <select class="form-control" class="form-control" id="tax_exempt" name="tax_exempt">
+	      <option value="0">No preference</option>
+	      <option value="1" selected>Yes</option>
+	      <option value="2">No</option>
+	    </select>
+	  </div>
+        </div>
+        </div>
+
+	<!BBB: yes (1) or no (0)>
+        <div class="form-group">
+	  <div class="row">
+          <label class="control-label col-sm-4" for="bbb_accred">BBB accredited:</label>
+	  <div class="col-sm-2">
+	    <select class="form-control"  id="bbb_accred" name="bbb_accred">
+	      <option value="0">No preference</option>
+	      <option value="1" selected>Yes</option>
+	      <option value="2">No</option>
+	    </select>
+	  </div>
+        </div>
+        </div>
+
+	<!CN: yes (1) or no (0)>
+        <div class="form-group">
+	  <div class="row">
+          <label class="control-label col-sm-4" for="cn_rated">Charity Navigator rating:</label>
+	  <div class="col-sm-2">
+	    <select class="form-control"  id="cn_rated" name="cn_rated">
+	      <option value="0">No preference</option>
+	      <option value="1" selected>Yes</option>
+	      <option value="2">No</option>
+	    </select>
+	  </div>
+        </div>
+        </div>
 
         <div>
 	  <label class="control-label col-sm-4"></label> <! just using this line to get spacing right>
@@ -343,8 +403,10 @@
     </div>
     </div>
     <br>
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="../static/js/bootstrap.min.js"></script>
+
+    <!--script src="https://code.jquery.com/jquery-1.10.2.min.js"></script-->
+    <script src="static/js/jquery-1.10.2.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
 
     </div><!-- /.container -->
 
@@ -352,7 +414,8 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script-->
+    <script src="static/js/jquery.min.js"></script>
     <script src="../../dist/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
