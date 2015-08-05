@@ -1,11 +1,11 @@
-intro: 27
-motivation: 32
-demo: 34
-data: 24
-features: 30
-similarity: 49
-validation: 34
-me: 17
+intro: 27/33
+motivation: 32/48
+demo: 34/28
+data: 24/31
+features: 30/34
+similarity: 49/48
+validation: 34/39
+me: 17/15
 
 total: 247
 goal: 240

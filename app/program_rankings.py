@@ -2,21 +2,25 @@ import pandas as pd
 import numpy as np
 import pymysql as mdb
 
-mysqlauth = pd.DataFrame.from_csv('/home/kristy/Documents/auth_codes/mysql_user.csv')
-sqluser = mysqlauth.username[0]
-sqlpass = mysqlauth.password[0]
-
-con = mdb.connect(user=sqluser, host="localhost", db="charity_data", password=sqlpass, charset='utf8')
-
 # Convert user input to actual targets.
 def convert_prefs_to_ideal(pref_list):
     # Construct initial dataframe
     ideal_df = pd.DataFrame(columns=pref_list.viewkeys(), index=[1000], dtype='float64')
 
+    # Set up MySQL connection
+    mysqlauth = pd.DataFrame.from_csv('/home/kristy/Documents/auth_codes/mysql_user.csv')
+    sqluser = mysqlauth.username[0]
+    sqlpass = mysqlauth.password[0]
+    
+    con = mdb.connect(user=sqluser, host="localhost", db="charity_data", password=sqlpass, charset='utf8')
+
     # Read in SQL data with distributions for some variables.
     with con:
         distribution = pd.read_sql("SELECT * FROM distribution", con)
     distribution.index = distribution.distidx    
+
+    # Close MySQL connection
+    con.close()
 
     # Booleans are just scored as important or not.
     for col in ['bbb_accred', 'cn_rated', 'tax_exempt']:

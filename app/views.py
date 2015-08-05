@@ -9,12 +9,6 @@ import copy
 
 app = Flask(__name__)
 
-mysqlauth = pd.DataFrame.from_csv('/home/kristy/Documents/auth_codes/mysql_user.csv')
-sqluser = mysqlauth.username[0]
-sqlpass = mysqlauth.password[0]
-
-con = mdb.connect(user=sqluser, host="localhost", db="charity_data", password=sqlpass, charset='utf8')
-
 @app.route('/contact')
 def contact():
     return render_template("contact.html")
@@ -100,9 +94,17 @@ def output():
     # Put columns in fixed order
     ideal_char = ideal_char[feature_names]
 
-    # read SQL table into pandas data frame and convert to list of dictionaries
+    # Make command and read SQL table into pandas data frame and convert to list of dictionaries
     req_string = ' AND '.join(req_list)
     
+    # open connection to SQL
+    mysqlauth = pd.DataFrame.from_csv('/home/kristy/Documents/auth_codes/mysql_user.csv')
+    sqluser = mysqlauth.username[0]
+    sqlpass = mysqlauth.password[0]
+
+    con = mdb.connect(user=sqluser, host="localhost", db="charity_data", password=sqlpass, charset='utf8')
+
+
     # Base case, where user has not specified preferences.
     if req_string == '':
         try:
@@ -126,6 +128,10 @@ def output():
             the_result = 0
             return render_template("output.html", charities = charities, the_result = the_result, the_focus = the_focus, the_input = pref_list, custom_error = custom_error)
 
+    # close database
+    con.close()
+    
+    # Get rankings
     if len(panda_char) == 0:
         custom_error = "Sorry, no organizations meet your criteria. Try removing some of your filters."
         charities = []

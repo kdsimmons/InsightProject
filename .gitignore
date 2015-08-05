@@ -10,3 +10,4 @@ DataFromAdam/*
 .ipynb_checkpoints/*.ipynb
 *.*~
 *.*#
+*.zip
