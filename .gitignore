@@ -8,6 +8,7 @@ Insight HD Acceptance Letter July 2015.pdf
 world_innodb.sql
 DataFromAdam/*
 .ipynb_checkpoints/*.ipynb
+app/*
 *.*~
 *.*#
 *.zip
