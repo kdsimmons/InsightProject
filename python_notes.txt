@@ -11,3 +11,6 @@ NumPy:
 Pandas:
 - ser.values, ser.index, ser.name, ser.index.name
 - pd.isnull(), pd.notnull()
+
+general:
+- Miller-Ranum 12-13: basic list methods (similar tables follow for other structures)
