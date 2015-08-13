@@ -1,3 +1,4 @@
+
 NumPy:
 - zeros_like, ones_like, zeros, ones
 - array1.astype(array2.dtype)
@@ -14,3 +15,11 @@ Pandas:
 
 general:
 - Miller-Ranum 12-13: basic list methods (similar tables follow for other structures)
+
+https://www.youtube.com/watch?v=_AEJHKGk9ns&app=desktop:
+- immutable types: int, float, string, tuple
+- assignment NEVER copies
+- rebinding: apparent change to mutable immutable type
+- mutating: actual change to mutable type
+- for x in ... assigns x on each pass
+- better to return new list from function and assign outside than to mutate original list within function
