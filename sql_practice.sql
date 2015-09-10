@@ -1,5 +1,26 @@
 USE employees;
 
+/* Extra testing */
+SELECT emp_no, salary
+       FROM salaries
+       WHERE salary IS NULL
+
+/*SELECT first_name, last_name, emp_no,
+       (SELECT SUM(salary)
+       	       FROM salaries
+	       WHERE salaries.emp_no = employees.emp_no) AS tot_sal
+	FROM employees
+	ORDER BY tot_sal DESC
+	LIMIT 10
+*/
+/*
+SELECT SUM(salary) AS tot_salary, emp_no
+       FROM salaries
+       GROUP BY emp_no
+       HAVING tot_salary > 100000
+       LIMIT 10
+*/
+
 /* 1. Extract all employees from the sales department. */
 /*SELECT DISTINCT emp_no, dept_name
        FROM dept_emp
@@ -40,7 +61,7 @@ USE employees;
 
 /* 4. Find all employees who currently work in the IT department for 1-3 years. */
 /* Changed to Research department b/c I don't see an IT dept anywhere. */
-SELECT cur_title.emp_no, cur_title.title, cur_title.from_date
+/*SELECT cur_title.emp_no, cur_title.title, cur_title.from_date
     FROM (SELECT emp_no, title, from_date, to_date
       	 FROM titles
          WHERE to_date = '9999-01-01'
@@ -54,5 +75,5 @@ SELECT cur_title.emp_no, cur_title.title, cur_title.from_date
     ON cur_title.emp_no = research.emp_no
     ORDER BY from_date DESC
     LIMIT 30;
-
+*/
 

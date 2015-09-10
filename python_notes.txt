@@ -12,14 +12,23 @@ NumPy:
 Pandas:
 - ser.values, ser.index, ser.name, ser.index.name
 - pd.isnull(), pd.notnull()
+- use read_csv, not from_csv
+- indexing: iloc takes integer positions or booleans; loc takes labels or booleans (but may look like it takes integer positions if the index is the same of the row number); ix takes either iloc or loc input
+- date/time index (parse_dates to read in)
+- .dt to access datetime-like series as dates/times
+- .str to use string methods
 
 general:
 - Miller-Ranum 12-13: basic list methods (similar tables follow for other structures)
+- ['a','b'] + ['c'] => ['a','b','c']
+- swapping: a, b = b, a
+- use _ to retrieve last result
+- xrange in list comprehension generates values one at a time and can be more efficient than range for long lists
 
 https://www.youtube.com/watch?v=_AEJHKGk9ns&app=desktop:
 - immutable types: int, float, string, tuple
 - assignment NEVER copies
-- rebinding: apparent change to mutable immutable type
+- rebinding: apparent change to immutable type
 - mutating: actual change to mutable type
 - for x in ... assigns x on each pass
 - better to return new list from function and assign outside than to mutate original list within function
