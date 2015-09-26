@@ -24,6 +24,7 @@ general:
 - swapping: a, b = b, a
 - use _ to retrieve last result
 - xrange in list comprehension generates values one at a time and can be more efficient than range for long lists
+- dir(obj) lists attributes
 
 https://www.youtube.com/watch?v=_AEJHKGk9ns&app=desktop:
 - immutable types: int, float, string, tuple

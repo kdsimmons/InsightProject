@@ -1,0 +1,5 @@
+1. Pharmacy A is more valuable, as it sells twice as much acetaminophen as Pharmacy B and thus generates more revenue for McKesson regardless of supplier.
+
+2. Supplier Y is more valuable to McKesson. Even though each pharmacy buys more acetaminophen from Supplier X, the large difference in price paid means that Supplier Y generates more revenue for McKesson.
+
+3. Supplier Y appears to generate a smaller supply. Thus, they might not be able to take advantage of the economies of scale in the same way that Supplier X can. Conversely, Supplier Y may have better marketing than Supplier X so that consumers are willing to pay a premium for acetaminophen from Supplier Y.

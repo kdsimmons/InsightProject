@@ -22,7 +22,7 @@ test_db.py: test that MySQL is working
 timing.txt: timing of each slide
 world_innodb.sql: SQL file from dev setup
 
-data analysis files:
+data analysis files (some in app folder):
 AvailableInfo.txt: variables available from BBB and CN
 clean_sql.py: clean SQL database without rescraping (duplicate of code to make_database.py used when changes are made to the cleaning process)
 DataFromAdam: files from previous fellow who looked at charities
@@ -79,6 +79,7 @@ master_disease_list.py,master_disease_list.pyc: load in list of diseases
 master_disease_list.txt: obsolete
 myapp.conf: supervisord configuration
 program_rankings.py,program_rankings.pyc: functions to rank charities
+start_app: command to start running app with supervisor
 supervisord.log,supervisord.pid: info printed by supervisord
 views.py,views.pyc: outer code to run app
 
